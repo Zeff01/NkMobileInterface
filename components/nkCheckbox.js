@@ -40,8 +40,9 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     textLabel: {
-        fontSize: 18,
-        fontWeight: 'bold',
+        fontSize: 15,
+        fontFamily: 'AbadiMTStd',
+        color: '#000000' ,
 
     }
 });

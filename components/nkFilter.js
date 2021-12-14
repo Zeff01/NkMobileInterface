@@ -9,7 +9,7 @@ import NkDatePicker from './nkDatePicker';
 const NkFilter = props => {
     return (
         <Div style={NwClass.fieldSet}>
-            <Text style={[NwClass.legend, props.textStyle]}>{props.Text}</Text>
+            <Text style={[NwClass.legend, props.textStyle]}>{props.title}</Text>
             <Div style={NwClass.row}>
                 <Div style={[NwClass.col, NwClass.col_6]}>
                     <Div style={NwClass.row}>

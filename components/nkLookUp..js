@@ -23,8 +23,8 @@ const NkLookUp = props=> {
               style={styles.textInput}
             >
             </TextInput>        
-            <TouchableOpacity onPress={props.customClick} style={styles.lookUp}>
-            <Ionicons name='search' size={30} color='white' />     
+            <TouchableOpacity onPress={props.customClick} style={[styles.lookUp, props.lookupStyle]}>
+            <Ionicons name='search' size={27} color='white' />     
             </TouchableOpacity>
         </View>
     )
@@ -33,7 +33,6 @@ const NkLookUp = props=> {
 const styles = StyleSheet.create({
     inputContainer:{
         flex: 1,
-        borderColor: Colors.black,
         backgroundColor: Colors.white,
         fontSize: 18,
         borderRadius: 3,
@@ -41,9 +40,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: 'orange',
         borderWidth: 0,
         paddingHorizontal: 0,
+        borderWidth: .6,
+        borderColor: '#aaaaaa'
     },
     textInput:{  
         color: 'rgb(34, 34, 34)',
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     },
 
     lookUp:{
-        backgroundColor: Colors.headerBackgroundColor,
+        backgroundColor: '#2575c4',
         paddingHorizontal: 8,
         paddingVertical: 3,
     }

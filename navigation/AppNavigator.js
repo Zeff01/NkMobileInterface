@@ -18,8 +18,7 @@ const Stack = createStackNavigator();
 const AppNavigator = props => {
 
 
-    return (
-        <NavigationContainer>
+    return (     
             <Stack.Navigator>
                 <Stack.Screen
                     name="Demo"
@@ -31,9 +30,7 @@ const AppNavigator = props => {
                 <Stack.Screen
                     name='Main Navigator'
                     component={MainTitleNavigator}
-                    options={{
-                        headerText: 'Main Text'
-                    }}
+
                 />
                      <Stack.Screen
                     name='Main Navigator Textbox'
@@ -61,9 +58,7 @@ const AppNavigator = props => {
              
                     }}
                 />
-            </Stack.Navigator>
-        </NavigationContainer>
-
+            </Stack.Navigator> 
     )
 }
 

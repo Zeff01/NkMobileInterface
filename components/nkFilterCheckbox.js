@@ -8,7 +8,7 @@ import NkCheckbox from './nkCheckbox';
 const NkFilterCheckbox = props => {
     return (
         <Div style={[NwClass.fieldSet, props.style]}>
-            <Text style={[NwClass.legend, props.textStyle]}>{props.Text}</Text>
+            <Text style={[NwClass.legend, props.textStyle]}>{props.title}</Text>
             <Div style={NwClass.row}>
 
                 {props.addCheckbox1 && (

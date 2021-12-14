@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
 
     },
     dateText: {
-        color: 'black',
+        color: '#333',
         marginLeft: 5,
     }
 });

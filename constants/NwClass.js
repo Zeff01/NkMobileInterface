@@ -5,10 +5,10 @@ import { Portal } from 'react-native-paper';
 import Colors from './Colors';
 
 //landscape tablet, 992px and up
-var tabletLandscape = 993;
+var tabletLandscape = 900;
 
 //portrait tablet 769px - 992px
-var tabletPortait = 992;
+var tabletPortait = 750;
 
 //landscape phone, 577px - 768px
 var phoneLandscape = 768;
@@ -19,7 +19,7 @@ var phonePortrait = 576;
 const dimheight = Dimensions.get('window').height
 const dimwidth = Dimensions.get('window').width
 
-{ console.log(dimheight) }
+// { console.log(dimheight) }
 { console.log(dimwidth) }
 
 
@@ -32,7 +32,7 @@ export const NwClass = StyleSheet.create({
         color: Colors.black,
         padding: 40,
         borderRadius: 6,
-        borderWidth: 2,
+        borderWidth: 1,
         borderColor: 'rgb(37, 97, 156)',
         width: '100%',
         marginBottom: 10,
@@ -47,6 +47,17 @@ export const NwClass = StyleSheet.create({
         borderBottomColor: 'black',
         borderBottomWidth: 1,
         marginHorizontal: 30,
+    },
+    hr2:{
+        marginHorizontal: 0,
+         borderBottomColor: '#8EBCEA',
+          borderBottomWidth: .5 ,
+          marginVertical: 20,
+    },
+    vr:{
+        borderLeftColor: '#aaaaaa',
+        borderLeftWidth: .5,
+        marginHorizontal: 10,
     },
     hrDashed: {
         borderBottomColor: 'rgb(34,34,34)',
@@ -72,14 +83,13 @@ export const NwClass = StyleSheet.create({
     row: {
         display: 'flex',
         width: '100%',
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         alignSelf: 'flex-start',
         flexDirection: 'row',
         flexWrap: 'wrap',
-
     },
     row_parent: {
-        marginBottom: 20,
+        marginBottom: 15,
     },
     col: {
         padding: 5,
@@ -97,54 +107,66 @@ export const NwClass = StyleSheet.create({
 
     },
 
+
+ 
+
+
     col_1: {
-        width: (dimwidth > tabletPortait) ? '8.33333%' : '100%',
+        width: (dimwidth > tabletLandscape) ? '8.33333%' : (dimwidth > tabletPortait) ?  '16.6666%':'100%',
         borderWidth: 1,
         borderColor: 'transparent',
 
     },
     col_2: {
-        width: (dimwidth > tabletPortait) ? '16.6666666667%' : '100%'
+        width: (dimwidth > tabletLandscape) ? '16.6666666667%' : (dimwidth > tabletPortait) ? '33.33%' : '100%',
     },
     col_3: {
-        width: (dimwidth > tabletPortait) ? '25%' : '100%',
+        width: (dimwidth > tabletLandscape) ? '25%' : (dimwidth > tabletPortait) ? '50%' : '100%',
         borderWidth: 1,
         borderColor: 'transparent',
     },
 
     col_4: {
-        width: (dimwidth > tabletPortait) ? '33.3333%' : (dimwidth > tabletPortait ? '66.66%' : '100%'),
+        width: (dimwidth > tabletLandscape) ? '33.3333%' : (dimwidth > tabletPortait) ? '66.66%' : '100%',
         borderWidth: 1,
-        borderColor: 'transparent'
+        borderColor: 'transparent',
+        
     },
     col_5: {
-        width: (dimwidth > tabletPortait) ? '41.6666666667%' : '100%'
+        width: (dimwidth > tabletLandscape) ? '41.6666666667%' : (dimwidth > tabletPortait) ? '83.33%' : '100%'
     },
     col_6: {
-        width: (dimwidth > tabletPortait) ? '50%' : '100%',
+        width: (dimwidth > tabletLandscape) ? '50%' : '100%',
         borderWidth: 1,
         borderColor: 'transparent',
     },
     col_7: {
-        width: (dimwidth > tabletPortait) ? '58.3333333333%' : '100%'
+        width: (dimwidth > tabletLandscape) ? '58.3333333333%'  : '100%'
     },
     col_8: {
-        width: (dimwidth > tabletPortait) ? '66.6666666667%' : '100%'
+        width: (dimwidth > tabletLandscape) ? '66.6666666667%'  : '100%'
     },
     col_9: {
-        width: (dimwidth > tabletPortait) ? '75%' : '100%'
+        width: (dimwidth > tabletLandscape) ? '75%' : '100%'
     },
     col_10: {
-        width: (dimwidth > tabletPortait) ? '83.3333333333%' : '100%'
+        width: (dimwidth > tabletLandscape) ? '83.3333333333%' : '100%'
     },
     col_11: {
-        width: (dimwidth > tabletPortait) ? '91.6666666667%' : '100%'
+        width: (dimwidth > tabletLandscape) ? '91.6666666667%' : '100%'
     },
     col_12: {
         width: '100%',
         borderWidth: 1,
         borderColor: 'transparent'
     },
+
+    col_6_MoB: {
+        width:  (dimwidth > tabletPortait && dimwidth < tabletLandscape) ?  '80%': '100%',
+
+    },
+
+
     inlineBlockBtn: {
         flexWrap: 'wrap',
         flexDirection: 'row'
@@ -248,24 +270,18 @@ export const NwClass = StyleSheet.create({
     table_wrapper: {
         width: '100%',
         borderColor: '#cfd5da',
-        borderRadius: 5,
-        overflow: 'hidden',
-
-        elevation: 1
-
-
-    },
+    
+       },
     label: {
-        color: 'black',
-        fontWeight: '500',
-        fontSize: 15,
+        color: '#333',
+       // fontWeight: '100',
+        fontSize: 12,
         marginTop: 0,
         paddingVertical: 6,
         paddingHorizontal: 2,
-        fontFamily: 'AbadiMTStd',
-
-
-
+        fontFamily: 'Tahoma'
+      
+    
     },
     txtbox: {
         fontSize: 13,
@@ -282,8 +298,6 @@ export const NwClass = StyleSheet.create({
         height: 70,
         maxHeight: 160,
         lineHeight: 20,
-
-
     },
     btn_default: {
         height: 45,
@@ -346,6 +360,13 @@ export const NwClass = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#d7ebff'
     },
+    btn_title_with_icon:{
+        flexDirection:  (dimwidth > tabletLandscape) ? 'row' :  'column',
+        padding: 0,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
     position_x_right: {
         justifyContent: 'flex-end'
     },
@@ -414,7 +435,7 @@ export const NwClass = StyleSheet.create({
         color: 'black',
         lineHeight: 22,
         paddingHorizontal: 2,
-        fontWeight: '700',
+        fontWeight: '600',
         fontFamily: 'AbadiMTStd',
     },
     tabs_subText: {
@@ -422,8 +443,9 @@ export const NwClass = StyleSheet.create({
         position: 'relative',
         paddingHorizontal: 4,
         lineHeight: 18,
-        fontSize: 15,
+        fontSize: 14,
         fontFamily: 'AbadiMTStd',
+        color: 'black',
     },
     tabs_content: {
         position: 'relative',
@@ -441,7 +463,7 @@ export const NwClass = StyleSheet.create({
         borderBottomRightRadius: 6,
     },
     tabs_labelText: {
-        fontWeight: '600',
+        fontWeight: '500',
         fontSize: 18,
         color: 'black',
         fontFamily: 'AbadiMTStd',
@@ -627,7 +649,7 @@ export const NwClass = StyleSheet.create({
         top: -16,
         left: 10,
         fontWeight: 'bold',
-        backgroundColor: '#f2f2f2',
+        backgroundColor: 'white',
         fontSize: 22,
         color: '#2474c2',
         fontFamily: 'AbadiMTStd',
@@ -672,6 +694,31 @@ export const NwClass = StyleSheet.create({
         paddingBottom: 0,
         textAlign: 'left',
         fontFamily: 'AbadiMTStd',
+    },
+    progressBar:{
+        margin: 10,
+        height: 9,
+        width: '100%'
+
+    },
+    progressCircle:{
+        marginHorizontal: 20
+    },
+    nk_toolbar:{
+        paddingVertical: 0,
+        width: '100%',
+        borderBottomWidth: 1.5,
+        borderBottomColor: '#e8edf3',
+        backgroundColor: 'white',
+    },
+    border_purple:{
+        borderColor: Colors.border_accent_purple
+    },
+    border_darkorange:{
+        borderColor: Colors.border_dark_orange
+    },
+    border_darkblue:{
+        borderColor: Colors.border_dark_blue
     },
 
 

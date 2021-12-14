@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     container:{
         backgroundColor: Colors.container,
         borderColor: Colors.borderContainer,
-        borderWidth: 0.5,
+        borderWidth: 0.3,
         borderRadius: 6,
         elevation: 0.5,
     }
