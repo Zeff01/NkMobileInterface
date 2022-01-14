@@ -6,7 +6,8 @@ import {
     SafeAreaView,
     ScrollView,
     ActivityIndicator,
-    Dimensions
+    Dimensions,
+    Image
 } from 'react-native';
 
 import LinearGradient from 'react-native-linear-gradient';
@@ -19,7 +20,7 @@ import * as Progress from 'react-native-progress';
 //import CircularProgress from 'react-native-circular-progress-indicator';
 
 import Colors from '../constants/Colors';
-import { NwClass } from '../constants/NwClass';
+// import { NwClass } from '../constants/NwClass';
 
 import NkTextInput from '../components/nkTextInput';
 import NkButton from '../components/nkButton';
@@ -41,6 +42,9 @@ import NkSuccessModal from '../components/nkSuccessModal';
 import NkAlertModal from '../components/nkAlertModal';
 import NkErrorModal from '../components/nkErrorModal';
 import NkFieldsetTable from '../components/nkFieldsetTable';
+import NkDiskette from '../components/nkDiskette';
+import NkPagination from '../components/nkPagination';
+import ColumnHandler from '../components/ColumnHandler';
 
 
 import { useOrientation } from '../functions/useOrientation';
@@ -58,7 +62,6 @@ import Svg, {
     Line,
     Rect,
     Use,
-    Image,
     Symbol,
     Defs,
     RadialGradient,
@@ -67,6 +70,8 @@ import Svg, {
     Pattern,
     Mask,
 } from 'react-native-svg';
+import NkStickyFieldsetTable from '../components/nkStickyFieldsetTable';
+import { useStyles } from '../functions/Orientation';
 
 const xmlSVG = `
     <svg xmlns="http://www.w3.org/2000/svg" class="nw-svg-d-error"
@@ -80,19 +85,11 @@ const svghehe = `<svg xmlns="http://www.w3.org/2000/svg" id="f2ff553f-f418-4867-
 
 const DemoScreen = props => {
 
-    useOrientation();
-    // const orientation = useOrientation();
+    const NwClass = useStyles();
 
-    const dimheight = Dimensions.get('window').height
-    const dimwidth = Dimensions.get('window').width
-
-    // { console.log(dimheight) }
-    // { console.log(dimwidth) }
-
-    // if (dimwidth > 771) {
     return (
-        <View style={{ flex: 1, backgroundColor: 'white' }}>
-            <View style={NwClass.nk_toolbar}>
+        <View style={{ flex: 1, }}>
+            <View style={[NwClass.nk_toolbar,]}>
                 <Div style={[NwClass.row, NwClass.row_parent,]}>
                     <Div style={[NwClass.col, NwClass.col_12,]}>
                         <Header />
@@ -108,7 +105,7 @@ const DemoScreen = props => {
                         height="500"
                         xml={svghehe}
                     /> */}
-{/* 
+                    {/* 
                      <Svg height="50%" width="50%" viewBox="0 0 100 100">
                         <Circle
                             cx="50"
@@ -129,9 +126,6 @@ const DemoScreen = props => {
                         </Text>
                     </LinearGradient>
 
-                    <NkButton
-                        butonTitle
-                        title='TEST' />
 
                     <Div style={NwClass.container}>
                         <Text style={NwClass.label}>Container</Text>
@@ -212,14 +206,6 @@ const DemoScreen = props => {
                             <Text style={NwClass.sampleText}>col-3</Text>
                         </Div>
                     </Div>
-
-                     {/*  Col 3 */}
-                     <Div style={[NwClass.row, NwClass.row_parent]}>
-                        <Div style={[NwClass.col, NwClass.col_3, NwClass.sampleLight]}>
-                            <Text style={NwClass.sampleText}>col-3</Text>
-                        </Div>
-                    </Div>
-
                     {/*  Col 4 */}
                     <Div style={[NwClass.row, NwClass.row_parent]}>
                         <Div style={[NwClass.col, NwClass.col_4, NwClass.sampleLight]}>
@@ -355,7 +341,6 @@ const DemoScreen = props => {
                             <Text style={NwClass.sampleText}>col-3</Text>
                         </Div>
                     </Div>
-
 
 
                     {/* 1 row parent */}
@@ -1111,7 +1096,7 @@ const DemoScreen = props => {
                     <Div style={[NwClass.row, NwClass.row_parent, NwClass.margin_auto]}>
                         <Div style={[NwClass.col, NwClass.col_4, NwClass.col_parent, NwClass.padding_x_15,]}>
                             <Div style={NwClass.row}>
-                                <Div style={[NwClass.col, NwClass.col_5] }>
+                                <Div style={[NwClass.col, NwClass.col_5]}>
                                     <Text style={NwClass.label}>TextBox</Text>
                                 </Div>
                                 <Div style={[NwClass.col, NwClass.col_7]}>
@@ -1121,7 +1106,7 @@ const DemoScreen = props => {
                                 </Div>
                             </Div>
                             <Div style={NwClass.row}>
-                                <Div style={[NwClass.col,NwClass.col_5]}>
+                                <Div style={[NwClass.col, NwClass.col_5]}>
                                     <Text style={NwClass.label}>TextBox</Text>
                                 </Div>
                                 <Div style={[NwClass.col, NwClass.col_7]}>
@@ -1632,7 +1617,7 @@ const DemoScreen = props => {
                         </Div>
                     </Div>
                     {/* -------------------------------------------------- */}
-                    {/* 13 row parent Fieldset with Table*/}
+                    {/* 14 row parent Fieldset with Table*/}
                     <Div style={[NwClass.row, NwClass.row_parent,]}>
                         <Div style={[NwClass.col, NwClass.col_12, NwClass.col_parent, NwClass.inlineBlockBtn]}>
                             <Div style={[NwClass.col, NwClass.col_10, { justifyContent: 'flex-start' }]}>
@@ -1644,7 +1629,20 @@ const DemoScreen = props => {
                         </Div>
                     </Div>
                     {/* -------------------------------------------------- */}
-                    {/* 13 row parent legends and form*/}
+                    {/* 14 row parent STICKY Fieldset with Table*/}
+                    <Div style={[NwClass.row, NwClass.row_parent,]}>
+                        <Div style={[NwClass.col, NwClass.col_12, NwClass.col_parent, NwClass.inlineBlockBtn]}>
+                            <Div style={[NwClass.col, NwClass.col_10, { justifyContent: 'flex-start' }]}>
+                                <NkStickyFieldsetTable
+                                    title='Sticky Fieldset Table'
+                                    textStyle={{ color: 'black', fontWeight: '600', fontFamily: 'AbadiMTStd', fontSize: 17, top: -12 }}
+                                />
+                            </Div>
+                        </Div>
+                    </Div>
+                    {/* -------------------------------------------------- */}
+
+                    {/* 15 row parent legends and form*/}
                     <Div style={[NwClass.row, NwClass.row_parent,]}>
                         <Div style={[NwClass.col, NwClass.col_12, NwClass.col_parent, NwClass.inlineBlockBtn]}>
                             <Div style={[NwClass.col, NwClass.col_6, { justifyContent: 'flex-start' }]}>
@@ -1657,7 +1655,7 @@ const DemoScreen = props => {
                         </Div>
                     </Div>
                     {/* -------------------------------------------------- */}
-                    {/* 13 row parent legends and form*/}
+                    {/* 15 row parent legends and form*/}
                     <Div style={[NwClass.row, NwClass.row_parent, NwClass.margin_auto]}>
                         <Div style={[NwClass.col, NwClass.col_10, NwClass.col_parent, NwClass.inlineBlockBtn]}>
                             <Div style={[NwClass.col, NwClass.col_6,]}>
@@ -1685,9 +1683,9 @@ const DemoScreen = props => {
                         </Div>
                     </Div>
                     {/* -------------------------------------------------- */}
-                    {/* 13 row parent legends and form*/}
+                    {/* 15 row parent legends and form*/}
                     <Div style={[NwClass.row, NwClass.row_parent,]}>
-                        <Div style={[NwClass.col, NwClass.col_12, NwClass.col_parent, NwClass.inlineBlockBtn, ]}>
+                        <Div style={[NwClass.col, NwClass.col_12, NwClass.col_parent, NwClass.inlineBlockBtn,]}>
                             <Div style={[NwClass.col, NwClass.col_6,]}>
                                 <NkForm
                                     title='User Information'
@@ -1697,7 +1695,7 @@ const DemoScreen = props => {
                         </Div>
                     </Div>
                     {/* -------------------------------------------------- */}
-                    {/* 13 row parent legends and form*/}
+                    {/* 15 row parent legends and form*/}
                     <Div style={[NwClass.row, NwClass.row_parent,]}>
                         <Div style={[NwClass.col, NwClass.col_12, NwClass.col_parent, NwClass.inlineBlockBtn]}>
                             <Div style={[NwClass.col, NwClass.col_6]}>
@@ -1709,7 +1707,7 @@ const DemoScreen = props => {
                     </Div>
                     {/* -------------------------------------------------- */}
 
-                    {/* 14 row parent PROGRESS BAR/ ACTIVITY INDICATOR*/}
+                    {/* 16 row parent PROGRESS BAR/ ACTIVITY INDICATOR*/}
                     <Div style={[NwClass.row, NwClass.row_parent,]}>
                         <Div style={[NwClass.col, NwClass.col_12, NwClass.col_parent, NwClass.inlineBlockBtn]}>
                             <Div style={[NwClass.col, NwClass.col_6]}>
@@ -1752,7 +1750,7 @@ const DemoScreen = props => {
                                     progress={1}
                                     style={[NwClass.progressBar, { height: 45, }]}
                                     width={600}
-                                    height={200}
+                                    height={150}
                                     indeterminate={true}
                                     indeterminateAnimationDuration={5000}
                                     color='#52b7c1'
@@ -1822,7 +1820,7 @@ const DemoScreen = props => {
                         </Div>
                     </Div>
 
-                    {/* 14 row parent alert buttons*/}
+                    {/* 16 row parent alert buttons*/}
                     <Div style={[NwClass.row, NwClass.row_parent, NwClass.margin_auto]}>
                         <Div style={NwClass.row}>
                             <Div style={[NwClass.col_6, NwClass.inlineBlockBtn,]}>
@@ -1835,14 +1833,14 @@ const DemoScreen = props => {
                         </Div>
                     </Div>
                     {/* -------------------------------------------------- */}
-                    {/* 14 row parent alert buttons shows*/}
+                    {/* 17 row parent alert buttons shows*/}
                     <Div style={[NwClass.row, NwClass.row_parent, NwClass.margin_auto]}>
                         <Div style={NwClass.row}>
                             <Div style={[NwClass.col_12, NwClass.inlineBlockBtn,]}>
                                 <Div style={[NwClass.col_4,]}>
                                     <Div style={[NwClass.mdl_msg_wrap, { alignSelf: 'center' }]}>
                                         <Div>
-                                            <Ionicons name='warning-outline' size={70} color='#f75948' />
+                                            <Image style={NwClass.errorIcon} source={require('../assets/demoIcons/Modal-icon/error-red-png-type-60x60.png')} />
                                         </Div>
                                         <Div >
                                             <Text style={NwClass.mdl_msg_Text}>
@@ -1878,7 +1876,7 @@ const DemoScreen = props => {
                                 <Div style={[NwClass.col_4,]}>
                                     <Div style={[NwClass.mdl_msg_wrap, { alignSelf: 'center' }]}>
                                         <Div>
-                                            <Ionicons name='save-outline' size={70} color='#6c76e0' />
+                                            <Image style={NwClass.successIcon} source={require('../assets/demoIcons/Modal-icon/logout-violet-png-type-60x60.png')} />
                                         </Div>
                                         {/* <Div >
                             <Text style={NwClass.mdl_msg_Text}>
@@ -1917,11 +1915,11 @@ const DemoScreen = props => {
                                     <Div style={[NwClass.mdl_msg_wrap, { alignSelf: 'center' }]}>
                                         <Div style={{ alignSelf: 'flex-end' }}>
                                             <TouchableOpacity>
-                                                <Ionicons name='alert-circle-outline' size={70} color='#39b364' />
+                                                <Image style={NwClass.alertIcon2} source={require('../assets/demoIcons/Modal-icon/info-green-circle-png-type-60x60.png')} />
                                             </TouchableOpacity>
                                         </Div>
                                         <Div>
-                                            <Ionicons name='newspaper-outline' size={70} color='#39b364' />
+                                            <Image style={NwClass.alertIcon} source={require('../assets/demoIcons/Modal-icon/info-green-png-type-60x60.png')} />
                                         </Div>
 
                                         <Div >
@@ -1969,7 +1967,7 @@ const DemoScreen = props => {
                         textStyle={styles.tabletTableText}
                     />
                     {/* -------------------------------------------------- */}
-                    {/* 13 row parent Card*/}
+                    {/* 18 row parent Card*/}
                     <Div style={[NwClass.row, NwClass.row_parent, NwClass.inlineBlockBtn, NwClass.margin_auto,]}>
                         <Div style={[NwClass.col, NwClass.col_8, NwClass.inlineBlockBtn, NwClass.margin_auto,]}>
 
@@ -2021,7 +2019,7 @@ const DemoScreen = props => {
 
                     </Div>
                     {/* -------------------------------------------------- */}
-                    {/* 13 row parent CardText*/}
+                    {/* 18 row parent CardText*/}
                     <Div style={[NwClass.row, NwClass.row_parent, NwClass.margin_auto,]}>
                         <Div style={[NwClass.col, NwClass.col_12, NwClass.inlineBlockBtn, NwClass.margin_auto,]}>
                             <NkCardtext
@@ -2053,6 +2051,24 @@ const DemoScreen = props => {
 
                     {/* -------------------------------------------------- */}
 
+                    {/* 18 row parent CardText*/}
+                    <Div style={[NwClass.row, NwClass.row_parent, NwClass.margin_auto,]}>
+                        <NkPagination
+                            numbers={5}
+                        />
+                    </Div>
+                    <Div style={[NwClass.row, NwClass.row_parent, NwClass.margin_auto,]}>
+                        <NkPagination
+                            numbers={10}
+                        />
+                    </Div>
+                    <Div style={[NwClass.row, NwClass.row_parent, NwClass.margin_auto,]}>
+                        <NkPagination
+                            numbers={15}
+                        />
+                    </Div>
+                    {/* -------------------------------------------------- */}
+
                     <View style={{ flexDirection: 'row', marginBottom: 30, }}>
                         <ActivityIndicator />
                         <ActivityIndicator size="large" />
@@ -2078,7 +2094,7 @@ const DemoScreen = props => {
                             label='Checkbox 4'
                         />
                     </View>
-                    {/* 13 row parent colored Text box*/}
+                    {/* 19 row parent colored Text box*/}
                     {/* Purple BORDER */}
                     <Div style={[NwClass.row, NwClass.row_parent]}>
                         <Div style={[NwClass.col, NwClass.col_6, NwClass.col_parent, NwClass.padding_x_15]}>
@@ -2799,7 +2815,25 @@ const DemoScreen = props => {
                         </Div>
                     </Div>
                     {/* ------ */}
-
+                    {/* Diskette Icon */}
+                    <Div style={[NwClass.row, NwClass.row_parent,]}>
+                        <Div style={[NwClass.col_4, NwClass.col_parent, NwClass.padding_x_15,]}>
+                            <NkDiskette
+                                imageUri={require('../assets/disketteIcon.png')}
+                            />
+                        </Div>
+                        <Div style={[NwClass.col_4, NwClass.col_parent, NwClass.padding_x_15,]}>
+                            <NkDiskette
+                                imageUri={require('../assets/disketteIcon.png')}
+                            />
+                        </Div>
+                        <Div style={[NwClass.col_4, NwClass.col_parent, NwClass.padding_x_15,]}>
+                            <NkDiskette
+                                imageUri={require('../assets/disketteIcon.png')}
+                            />
+                        </Div>
+                    </Div>
+                    {/* ------ */}
 
 
 

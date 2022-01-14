@@ -21,96 +21,103 @@ import DocumentControlScreen from '../screens/DocumentControlScreen'
 import RequestManagementScreen from '../screens/RequestManagementScreen'
 import SystemsGlobalScreen from '../screens/SystemsGlobalScreen'
 import WorkflowManagementScreen from '../screens/WorkflowManagementScreen'
+import ProgressScreen from '../screens/ProgressScreen';
+
+
 
 
 const Drawer = createDrawerNavigator();
 
 const HomeDrawerNavigator = props => {
     return (
-        <NavigationContainer>
-            <Drawer.Navigator
-            drawerContent={props => <DrawerContent {...props}/>}
-                screenOptions={{
-                    drawerInactiveTintColor: '#555',
-                    itemStyle: { marginVertical: 5, },  
-                }}  
-            screenOptions={{
-                drawerStyle:{
-                    backgroundColor: 'transparent'
-                },
-              }}
-            >   
-                <Drawer.Screen
-                    name='Home'
-                    component={AppNavigator}
-                    options={{
-                        headerTitle: 'NOAH Buisness Applications',
-                        headerTitleStyle:{
-                            fontFamily: 'AbadiMTStd',
-                            fontWeight: 'bold'
 
-                        },
-                        headerTintColor: 'white',
-                        headerStyle:{
-                            backgroundColor: Colors.border_accent2_28396f,
-                            height: 40
-                        }
-                    }}
-                />
-                <Drawer.Screen
-                    name='Budget'
-                    component={BudgetScreen}
-                />
-                <Drawer.Screen
-                    name='System Administration'
-                    component={SystemAdminScreen}
-                />
-                <Drawer.Screen
-                    name='Accounts Payable (AP)'
-                    component={AccountsPayableScreen}
-                />
-                <Drawer.Screen
-                    name='Cash Management (CM)'
-                    component={CashManagementScreen}
-                />
-                <Drawer.Screen
-                    name='General Ledger (GL)'
-                    component={GeneralLedgerScreen}
-                />
-                <Drawer.Screen
-                    name='Inventory Management'
-                    component={InventoryManagementScreen}
-                />
-                <Drawer.Screen
-                    name='Promptus8'
-                    component={Promtus8Screen}
-                />
-                <Drawer.Screen
-                    name='Procurement Management'
-                    component={ProcurementManagementScreen}
-                />
-                <Drawer.Screen
-                    name='Property Plant Equipment'
-                    component={PropertPlantEquipmentScreen}
-                />
-                <Drawer.Screen
-                    name='Document Control (DC)'
-                    component={DocumentControlScreen}
-                />
-                <Drawer.Screen
-                    name='Request Management'
-                    component={RequestManagementScreen}
-                />
-                <Drawer.Screen
-                    name='Systems Global'
-                    component={SystemsGlobalScreen}
-                />
-                <Drawer.Screen
-                    name='Workflow Management'
-                    component={WorkflowManagementScreen}
-                />
-            </Drawer.Navigator>
-        </NavigationContainer>
+        <Drawer.Navigator
+            drawerContent={props => <DrawerContent {...props} />}
+            screenOptions={{
+                drawerInactiveTintColor: '#555',
+                itemStyle: { marginVertical: 5, },
+            }}
+            screenOptions={{
+                drawerStyle: {
+                    //   backgroundColor: 'transparent'
+                },
+            }}
+        >
+            <Drawer.Screen
+                name='Home'
+                component={AppNavigator}
+                options={{
+                    headerTitle: 'NOAH Buisness Applications',
+                    headerTitleStyle: {
+                        fontFamily: 'AbadiMTStd',
+                        fontWeight: 'bold'
+
+                    },
+                    headerTintColor: 'white',
+                    headerStyle: {
+                        backgroundColor: Colors.border_accent2_28396f,
+                        height: 40
+                    }
+                }}
+            />
+            <Drawer.Screen
+                name='Budget'
+                component={BudgetScreen}
+            />
+            <Drawer.Screen
+                name='System Administration'
+                component={SystemAdminScreen}
+            />
+            <Drawer.Screen
+                name='Accounts Payable'
+                component={AccountsPayableScreen}
+            />
+            <Drawer.Screen
+                name='Cash Management (CM)'
+                component={CashManagementScreen}
+            />
+            <Drawer.Screen
+                name='General Ledger'
+                component={GeneralLedgerScreen}
+            />
+            <Drawer.Screen
+                name='Inventory Management'
+                component={InventoryManagementScreen}
+            />
+            <Drawer.Screen
+                name='Promptus8'
+                component={Promtus8Screen}
+            />
+            <Drawer.Screen
+                name='Procurement Management'
+                component={ProcurementManagementScreen}
+            />
+            <Drawer.Screen
+                name='Property Plant Equipment'
+                component={PropertPlantEquipmentScreen}
+            />
+            <Drawer.Screen
+                name='Document Control'
+                component={DocumentControlScreen}
+            />
+            <Drawer.Screen
+                name='Request Management'
+                component={RequestManagementScreen}
+            />
+            <Drawer.Screen
+                name='Systems Global'
+                component={SystemsGlobalScreen}
+            />
+            <Drawer.Screen
+                name='Workflow Management'
+                component={WorkflowManagementScreen}
+            />
+            <Drawer.Screen
+                name='Progress Screen'
+                component={ProgressScreen}
+            />
+        </Drawer.Navigator>
+
 
     )
 }

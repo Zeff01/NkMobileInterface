@@ -1,8 +1,7 @@
 import React from 'react'
 import { View, StyleSheet, Text } from 'react-native';
 
-import ColumnOne from '../components/ColumnOne';
-import ColumnTwo from '../components/ColumnTwo';
+
 
 import Colors from '../constants/Colors';
 
@@ -29,7 +28,7 @@ const ColumnHandler = props => {
             {Array(props.columns).fill(0).map((value, index) => (
                 <View style={[styles.column,
                 index % 2 === 0 && { backgroundColor: Colors.btn_default_darkblue }]}
-                key={index}
+                    key={index}
                 >
                     <Text style={{ fontSize: 20, color: 'white' }}>Col-1</Text>
                 </View>

@@ -10,8 +10,8 @@ var tabletLandscape = 900;
 //portrait tablet 769px - 992px
 var tabletPortait = 750;
 
-//landscape phone, 577px - 768px
-var phoneLandscape = 768;
+//landscape phone, 577px - 771px
+var phoneLandscape = 771;
 
 //portrait phones, less than 576
 var phonePortrait = 576;
@@ -48,13 +48,13 @@ export const NwClass = StyleSheet.create({
         borderBottomWidth: 1,
         marginHorizontal: 30,
     },
-    hr2:{
+    hr2: {
         marginHorizontal: 0,
-         borderBottomColor: '#8EBCEA',
-          borderBottomWidth: .5 ,
-          marginVertical: 20,
+        borderBottomColor: '#8EBCEA',
+        borderBottomWidth: .5,
+        marginVertical: 20,
     },
-    vr:{
+    vr: {
         borderLeftColor: '#aaaaaa',
         borderLeftWidth: .5,
         marginHorizontal: 10,
@@ -71,7 +71,7 @@ export const NwClass = StyleSheet.create({
         textAlign: 'center',
         fontFamily: 'AbadiMTStd',
         fontSize: 15,
-        
+
     },
     sampleLight: {
         backgroundColor: '#25619c',
@@ -108,11 +108,11 @@ export const NwClass = StyleSheet.create({
     },
 
 
- 
+
 
 
     col_1: {
-        width: (dimwidth > tabletLandscape) ? '8.33333%' : (dimwidth > tabletPortait) ?  '16.6666%':'100%',
+        width: (dimwidth > tabletLandscape) ? '8.33333%' : (dimwidth > tabletPortait) ? '16.6666%' : '100%',
         borderWidth: 1,
         borderColor: 'transparent',
 
@@ -130,7 +130,7 @@ export const NwClass = StyleSheet.create({
         width: (dimwidth > tabletLandscape) ? '33.3333%' : (dimwidth > tabletPortait) ? '66.66%' : '100%',
         borderWidth: 1,
         borderColor: 'transparent',
-        
+
     },
     col_5: {
         width: (dimwidth > tabletLandscape) ? '41.6666666667%' : (dimwidth > tabletPortait) ? '83.33%' : '100%'
@@ -141,10 +141,10 @@ export const NwClass = StyleSheet.create({
         borderColor: 'transparent',
     },
     col_7: {
-        width: (dimwidth > tabletLandscape) ? '58.3333333333%'  : '100%'
+        width: (dimwidth > tabletLandscape) ? '58.3333333333%' : '100%'
     },
     col_8: {
-        width: (dimwidth > tabletLandscape) ? '66.6666666667%'  : '100%'
+        width: (dimwidth > tabletLandscape) ? '66.6666666667%' : '100%'
     },
     col_9: {
         width: (dimwidth > tabletLandscape) ? '75%' : '100%'
@@ -162,7 +162,7 @@ export const NwClass = StyleSheet.create({
     },
 
     col_6_MoB: {
-        width:  (dimwidth > tabletPortait && dimwidth < tabletLandscape) ?  '80%': '100%',
+        width: (dimwidth > tabletPortait && dimwidth < tabletLandscape) ? '80%' : '100%',
 
     },
 
@@ -270,18 +270,18 @@ export const NwClass = StyleSheet.create({
     table_wrapper: {
         width: '100%',
         borderColor: '#cfd5da',
-    
-       },
+
+    },
     label: {
         color: '#333',
-       // fontWeight: '100',
+        // fontWeight: '100',
         fontSize: 12,
         marginTop: 0,
         paddingVertical: 6,
         paddingHorizontal: 2,
         fontFamily: 'Tahoma'
-      
-    
+
+
     },
     txtbox: {
         fontSize: 13,
@@ -292,7 +292,7 @@ export const NwClass = StyleSheet.create({
         borderWidth: .6,
         borderColor: '#aaaaaa',
         fontFamily: 'AbadiMTStd',
-        
+
     },
     txtarea: {
         height: 70,
@@ -360,8 +360,8 @@ export const NwClass = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#d7ebff'
     },
-    btn_title_with_icon:{
-        flexDirection:  (dimwidth > tabletLandscape) ? 'row' :  'column',
+    btn_title_with_icon: {
+        flexDirection: (dimwidth > tabletLandscape) ? 'row' : 'column',
         padding: 0,
         justifyContent: 'center',
         alignItems: 'center',
@@ -391,7 +391,7 @@ export const NwClass = StyleSheet.create({
     padding_x_25: {
         paddingHorizontal: 25,
     },
-    padding_none:{
+    padding_none: {
         padding: 0
     },
     margin_y_5: {
@@ -504,7 +504,7 @@ export const NwClass = StyleSheet.create({
         width: 400,
         margin: 5,
     },
-    mdl_noWidth:{
+    mdl_noWidth: {
         width: '100%',
         margin: 5,
     },
@@ -603,7 +603,7 @@ export const NwClass = StyleSheet.create({
         color: '#6c76e0',
         fontWeight: '900',
         textAlign: 'center',
-       
+
     },
 
 
@@ -655,39 +655,39 @@ export const NwClass = StyleSheet.create({
         fontFamily: 'AbadiMTStd',
 
     },
-    borderSolid:{
+    borderSolid: {
         borderStyle: 'solid'
     },
-    borderDashed:{
+    borderDashed: {
         borderStyle: 'dashed'
     },
-    borderDotted:{
+    borderDotted: {
         borderStyle: 'dotted'
     },
-    border_NoHorizontal:{
+    border_NoHorizontal: {
         borderRightWidth: 0,
         borderLeftWidth: 0,
     },
-    border_NoVertical:{
+    border_NoVertical: {
         borderTopWidth: 0,
         borderBottomWidth: 0,
     },
-    card:{
+    card: {
         borderRadius: 6,
         width: 380,
         margin: 10,
         backgroundColor: 'white',
         padding: 5,
     },
-    card_title:{
-        fontSize:20,
+    card_title: {
+        fontSize: 20,
         lineHeight: 26,
         padding: 20,
         paddingBottom: 0,
         textAlign: 'left',
         fontFamily: 'AbadiMTStd',
     },
-    card_text:{
+    card_text: {
         fontSize: 15,
         lineHeight: 26,
         padding: 20,
@@ -695,31 +695,70 @@ export const NwClass = StyleSheet.create({
         textAlign: 'left',
         fontFamily: 'AbadiMTStd',
     },
-    progressBar:{
+    progressBar: {
         margin: 10,
         height: 9,
         width: '100%'
 
     },
-    progressCircle:{
+    progressCircle: {
         marginHorizontal: 20
     },
-    nk_toolbar:{
+    nk_toolbar: {
         paddingVertical: 0,
         width: '100%',
         borderBottomWidth: 1.5,
         borderBottomColor: '#e8edf3',
         backgroundColor: 'white',
+
     },
-    border_purple:{
+    border_purple: {
         borderColor: Colors.border_accent_purple
     },
-    border_darkorange:{
+    border_darkorange: {
         borderColor: Colors.border_dark_orange
     },
-    border_darkblue:{
+    border_darkblue: {
         borderColor: Colors.border_dark_blue
     },
+    headerIcon: {
+        width: 20,
+        height: 20,
+    },
+    headertxtInput: {
+        fontSize: 13,
+        color: 'rgb(34, 34, 34)',
+        paddingVertical: 2,
+        paddingHorizontal: 4,
+        borderRadius: 3,
+        borderWidth: .6,
+        borderColor: '#aaaaaa',
+        fontFamily: 'AbadiMTStd',
+        width: 30,
+        justifyContent: 'center',
+        alignItems: 'center',
+
+    },
+    fieldsetTableIcon: {
+        width: 20,
+        height: 20,
+    },
+    alertIcon: {
+        width: 90,
+        height: 90,
+    },
+    alertIcon2: {
+        width: 70,
+        height: 70,
+    },
+    errorIcon: {
+        width: 90,
+        height: 90,
+    },
+    successIcon: {
+        width: 90,
+        height: 90,
+    }
 
 
 

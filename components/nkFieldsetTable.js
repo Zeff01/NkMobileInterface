@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 import Feather from 'react-native-vector-icons/Feather'
 import Ionicons from 'react-native-vector-icons/Ionicons'
@@ -95,7 +95,7 @@ const NkFieldsetTable = props => {
                                         buttonTitle
                                         title={
                                             <View style={styles.iconContainer}>
-                                                <Ionicons name='construct-outline' size={25} color='rgb(37, 97, 156)' />
+                                                <Image style={NwClass.fieldsetTableIcon} source={require('../assets/demoIcons/grid-icon-design/insert-row-icon-design-22x22p-v2.png')} />
                                             </View>
                                         }
                                         style={styles.icon}
@@ -104,26 +104,7 @@ const NkFieldsetTable = props => {
                                         buttonTitle
                                         title={
                                             <View style={styles.iconContainer}>
-                                                <Ionicons name='arrow-redo-circle-outline' size={25} color='rgb(37, 97, 156)' />
-                                            </View>
-                                        }
-                                        style={styles.icon}
-                                    />
-                                    <Div style={NwClass.vr} />
-                                    <NkButton
-                                        buttonTitle
-                                        title={
-                                            <View style={styles.iconContainer}>
-                                                <Ionicons name='enter-outline' size={25} color='rgb(37, 97, 156)' />
-                                            </View>
-                                        }
-                                        style={styles.icon}
-                                    />
-                                    <NkButton
-                                        buttonTitle
-                                        title={
-                                            <View style={styles.iconContainer}>
-                                                <Ionicons name='git-merge-outline' size={25} color='rgb(37, 97, 156)' />
+                                                <Image style={NwClass.fieldsetTableIcon} source={require('../assets/demoIcons/grid-icon-design/delete-row-icon-design-22x22p-v3.png')} />
                                             </View>
                                         }
                                         style={styles.icon}
@@ -133,7 +114,26 @@ const NkFieldsetTable = props => {
                                         buttonTitle
                                         title={
                                             <View style={styles.iconContainer}>
-                                                <Ionicons name='shapes-outline' size={25} color='rgb(37, 97, 156)' />
+                                                <Image style={NwClass.fieldsetTableIcon} source={require('../assets/demoIcons/grid-icon-design/save-column-width-icon-design-22x22p.png')} />
+                                            </View>
+                                        }
+                                        style={styles.icon}
+                                    />
+                                    <NkButton
+                                        buttonTitle
+                                        title={
+                                            <View style={styles.iconContainer}>
+                                                <Image style={NwClass.fieldsetTableIcon} source={require('../assets/demoIcons/grid-icon-design/reset-column-width-icon-design-22x22p-v2.png')} />
+                                            </View>
+                                        }
+                                        style={styles.icon}
+                                    />
+                                    <Div style={NwClass.vr} />
+                                    <NkButton
+                                        buttonTitle
+                                        title={
+                                            <View style={styles.iconContainer}>
+                                                <Image style={NwClass.fieldsetTableIcon} source={require('../assets/demoIcons/grid-icon-design/reload-details-icon-design-22x22.png')} />
                                             </View>
                                         }
                                         style={styles.icon}
@@ -249,9 +249,7 @@ const styles = StyleSheet.create({
     icon: {
         backgroundColor: 'rgba(0,0,0,0)',
         padding: 0,
-        marginHorizontal: 5
-
-
+        marginHorizontal: 2,
     },
     iconText: {
         fontSize: 15,

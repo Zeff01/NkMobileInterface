@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
+import { Alert, Modal, StyleSheet, Text, Image, View } from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import Colors from '../constants/Colors';
@@ -26,7 +26,7 @@ const NkSuccessModal = props => {
                 <Div style={styles.centeredView}>
                     <Div style={NwClass.mdl_msg_wrap}>
                         <Div>
-                        <Ionicons name='save-outline' size={70} color='#6c76e0' />
+                            <Image style={NwClass.successIcon} source={require('../assets/demoIcons/Modal-icon/logout-violet-png-type-60x60.png')} />
                         </Div>
                         {/* <Div >
                             <Text style={NwClass.mdl_msg_title}>
@@ -35,10 +35,10 @@ const NkSuccessModal = props => {
                         </Div> */}
                         <Div style={NwClass.margin_y_10}>
                             <Text style={NwClass.mdl_error_txtmsg}>
-                                Your data has been saved successfully!                              
+                                Your data has been saved successfully!
                             </Text>
                             <Text style={NwClass.mdl_error_txtmsg}>
-                                (see details)                              
+                                (see details)
                             </Text>
                         </Div>
 

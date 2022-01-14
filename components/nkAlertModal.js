@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
+import { Alert, Modal, StyleSheet, Text, Image, View } from "react-native";
 
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
@@ -27,10 +27,11 @@ const NkAlertModal = props => {
                 <Div style={styles.centeredView}>
                     <Div style={NwClass.mdl_msg_wrap}>
                         <Div style={{ alignSelf: 'flex-end' }}>
-                            <Ionicons name='alert-circle-outline' size={70} color='#39b364' />
+                            <Image style={NwClass.alertIcon2} source={require('../assets/demoIcons/Modal-icon/info-green-circle-png-type-60x60.png')} />
                         </Div>
                         <Div>
-                            <Ionicons name='newspaper-outline' size={70} color='#39b364' />
+                            <Image style={NwClass.alertIcon} source={require('../assets/demoIcons/Modal-icon/info-green-png-type-60x60.png')} />
+                            {/* <Ionicons name='newspaper-outline' size={70} color='#39b364' /> */}
                         </Div>
 
                         <Div >

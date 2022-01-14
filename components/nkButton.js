@@ -18,25 +18,23 @@ const NkButton = props => {
             //     colors={['#4c669f', '#3b5998', '#192f6a']}
 
             // >
-                <TouchableOpacity
-                    style={[styles.button, props.style]}
-                    onPress={props.customClick}
-                    disabled={props.disabled}
-                >
+            <TouchableOpacity
+                style={[styles.button, props.style]}
+                onPress={props.customClick}
+                disabled={props.disabled}
+            >
 
-                    {props.buttonTitle && (
-                        <Text style={[styles.title, props.titleStyle]}>
-                            {props.title}
-                        </Text>
-                    )}
+                {props.buttonTitle && (
+                    <Text style={[styles.title, props.titleStyle]}>
+                        {props.title}
+                    </Text>
+                )}
 
-                    {props.iconButton && (
-                        <Ionicons name='arrow-forward' size={25} />
+                {props.iconButton && (
+                    <Ionicons name='arrow-forward' size={25} />
+                )}
 
-
-                    )}
-
-                </TouchableOpacity>
+            </TouchableOpacity>
             // </LinearGradient>
 
         )
@@ -60,7 +58,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         justifyContent: 'center',
         alignItems: 'center',
-      
+
 
     },
     title: {

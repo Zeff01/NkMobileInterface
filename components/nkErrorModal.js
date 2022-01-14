@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
+import { Alert, Modal, StyleSheet, Text, Image, View } from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import Colors from '../constants/Colors';
@@ -27,7 +27,7 @@ const NkErrorModal = props => {
                 <Div style={styles.centeredView}>
                     <Div style={NwClass.mdl_msg_wrap}>
                         <Div>
-                        <Ionicons name='warning-outline' size={70} color='#f75948'/>
+                            <Image style={NwClass.errorIcon} source={require('../assets/demoIcons/Modal-icon/error-red-png-type-60x60.png')} />
                         </Div>
                         <Div >
                             <Text style={NwClass.mdl_msg_title}>
