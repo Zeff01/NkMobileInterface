@@ -2011,8 +2011,8 @@ const DemoScreen = props => {
                                 iconName={'arrow-forward'}
                                 cardTitle='Card Text here'
                                 text='sssLorem ipsum dolor sit amet, consectetur adipiscing elit,
-                           sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                              et dolore magna aliqua lorem ipsum dolor lorem'
+                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                 et dolore magna aliqua lorem ipsum dolor lorem'
 
                             />
                         </Div>

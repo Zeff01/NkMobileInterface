@@ -1,12 +1,14 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native';
 
-import { NwClass } from '../constants/NwClass';
+// import { NwClass } from '../constants/NwClass';
+import { useStyles } from '../functions/Orientation';
 import Div from './div';
 import NkCheckbox from './nkCheckbox';
 import NkDatePicker from './nkDatePicker';
 
 const NkFilter = props => {
+    const NwClass = useStyles();
     return (
         <Div style={NwClass.fieldSet}>
             <Text style={[NwClass.legend, props.textStyle]}>{props.title}</Text>

@@ -7,7 +7,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import MainTitleNavigator from './MainTitleNavigator';
 import MainTitlewithTextboxNavigator from './MainTitlewithTextboxNavigator'
 import DemoScreen from '../screens/DemoScreen';
-import LoginScreen from '../screens/LoginScreen';
+import HomepageScreen from '../screens/HomepageScreen';
 import ColorPaletteScreen from '../screens/ColorPaletteScreen';
 import LookUpScreen from '../screens/LookUpScreen'
 import Colors from '../constants/Colors';
@@ -21,6 +21,13 @@ const AppNavigator = props => {
 
     return (
         <Stack.Navigator>
+            <Stack.Screen
+                name="Home"
+                component={HomepageScreen}
+                options={{
+                    headerShown: false
+                }}
+            />
             <Stack.Screen
                 name="Demo"
                 component={DemoScreen}

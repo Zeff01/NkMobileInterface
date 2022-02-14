@@ -4,9 +4,11 @@ import { View, Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react
 import Colors from '../constants/Colors';
 import NkButton from './nkButton';
 import Div from './div';
-import { NwClass } from '../constants/NwClass';
+// import { NwClass } from '../constants/NwClass';
+import { useStyles } from '../functions/Orientation';
 
 const NkCard = props => {
+    const NwClass = useStyles();
     return (
         <Div style={[styles.cardContainer, props.style,]}>
             <Div >
@@ -34,7 +36,6 @@ const NkCard = props => {
 
             <Div style={styles.textContainer}>
                 <Text style={[styles.NkCardtext, props.textStyle]}>{props.text}</Text>
-
             </Div>
 
             {props.hrBrokenTitle && (
@@ -43,8 +44,6 @@ const NkCard = props => {
 
 
             <Div style={styles.cardAction}>
-
-
                 {props.buttonAction1 && (
                     <TouchableOpacity>
                         <Text>Read more</Text>
@@ -60,10 +59,7 @@ const NkCard = props => {
                         <Text> Link Button</Text>
                     </TouchableOpacity>
                 )}
-
             </Div>
-
-
         </Div>
     )
 }

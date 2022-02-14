@@ -1,13 +1,14 @@
 import React from 'react'
-import {View, Text, StyleSheet, TextInput,} from 'react-native'
+import { View, Text, StyleSheet, TextInput, } from 'react-native'
 
 import Colors from '../constants/Colors';
 
 
 import Div from './div';
-import { NwClass } from '../constants/NwClass';
-
-const NkCardtext = props =>{
+// import { NwClass } from '../constants/NwClass';
+import { useStyles } from '../functions/Orientation';
+const NkCardtext = props => {
+    const NwClass = useStyles();
     return (
         <Div style={[NwClass.card, props.style]} >
             <Text style={NwClass.card_title}>{props.title}</Text>
@@ -15,12 +16,12 @@ const NkCardtext = props =>{
             <Text style={NwClass.card_title}>{props.text}</Text>
 
         </Div>
-        
+
     )
 }
 
 const styles = StyleSheet.create({
-    container:{
+    container: {
         borderWidth: .7,
         borderColor: 'black',
         margin: 5,

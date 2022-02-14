@@ -100,10 +100,6 @@ export function useStyles() {
 
     },
 
-
-
-
-
     col_1: {
       width: (dimwidth > tabletLandscape) ? '8.33333%' : (dimwidth > tabletPortait) ? '16.6666%' : '100%',
       borderWidth: 1,

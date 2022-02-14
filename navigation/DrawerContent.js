@@ -28,7 +28,14 @@ const drawerItems = [{
     title: 'Home',
     screenName: 'Home',
 
-}, {
+},
+{
+    iconName: 'home-outline',
+    title: 'Demo',
+    screenName: 'Demo',
+
+},
+{
     iconName: 'account-outline',
     title: 'Budget',
     // screenName: 'Budget',
@@ -181,7 +188,7 @@ const DrawerContent = props => {
                                 <Caption style={styles.caption}>@Zeff001</Caption>
                             </View>
                         </View>
-                        <View style={styles.row}>
+                        {/* <View style={styles.row}>
                             <View style={styles.section}>
                                 <Paragraph style={[styles.paragraph, styles.caption]}>80</Paragraph>
                                 <Caption style={styles.caption}>Follwoing</Caption>
@@ -190,7 +197,7 @@ const DrawerContent = props => {
                                 <Paragraph style={[styles.paragraph, styles.caption]}>100</Paragraph>
                                 <Caption style={styles.caption}>Followers</Caption>
                             </View>
-                        </View>
+                        </View> */}
                     </View>
                     <NkSearchBar
                         style={[NwClass.txtbox, styles.searchBar]}

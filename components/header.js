@@ -3,7 +3,8 @@ import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity } from 'rea
 import NkButton from './nkButton';
 import { useNavigation } from '@react-navigation/native';
 
-import { NwClass } from '../constants/NwClass';
+// import { NwClass } from '../constants/NwClass';
+import { useStyles } from '../functions/Orientation'
 import NkTextInput from './nkTextInput';
 
 
@@ -27,11 +28,11 @@ const dimwidth = Dimensions.get('window').width
 const Header = props => {
 
     const navigation = useNavigation();
-
+    const NwClass = useStyles();
     return (
         <View style={styles.container}>
             <View style={styles.buttonContainer}>
-                <NkButton
+                {/* <NkButton
                     buttonTitle
                     title={
                         <View style={NwClass.btn_title_with_icon}>
@@ -75,7 +76,7 @@ const Header = props => {
                         </View>
                     }
                     style={styles.button}
-                />
+                /> */}
 
                 <NkButton
                     buttonTitle

@@ -3,13 +3,15 @@ import { Alert, Modal, StyleSheet, Text, Image, View } from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import Colors from '../constants/Colors';
-import { NwClass } from '../constants/NwClass';
+// import { NwClass } from '../constants/NwClass';
+import { useStyles } from '../functions/Orientation';
 import Div from './div';
 import NkButton from './nkButton';
 
 
 
 const NkErrorModal = props => {
+    const NwClass = useStyles();
 
     const [modalVisible, setModalVisible] = useState(false);
 

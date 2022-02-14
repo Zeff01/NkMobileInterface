@@ -2,7 +2,6 @@ import React from 'react'
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 
 import Div from './div';
-import { NwClass } from '../constants/NwClass';
 
 const NkPagination = props => {
 

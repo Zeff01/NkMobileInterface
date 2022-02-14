@@ -8,7 +8,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 
 import Colors from '../constants/Colors';
-import { NwClass } from '../constants/NwClass';
+// import { NwClass } from '../constants/NwClass';
+import { useStyles } from '../functions/Orientation';
 
 import NkPicker from '../components/nkPicker';
 import NkSearchBar from '../components/nkSearchBar';
@@ -17,6 +18,7 @@ import NkTextInput from '../components/nkTextInput';
 import NkButton from './nkButton';
 
 const NkStickyFieldsetTable = props => {
+    const NwClass = useStyles();
     const [tableHead, setTableHead] = useState([
         '',
         '#',

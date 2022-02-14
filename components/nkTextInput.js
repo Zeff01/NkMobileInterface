@@ -21,7 +21,8 @@ const NkTextInput = props => {
                 style={[styles.input, props.style]}
                 blurOnSubmit={false}
                 value={props.value}
-
+                secureTextEntry={props.secureTextEntry}
+                focus={props.focus}
             />
         </View>
     )

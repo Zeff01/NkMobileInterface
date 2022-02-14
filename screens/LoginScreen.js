@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
-import React from 'react'
-import { Text, StyleSheet, Image, ImageBackground, ScrollView, View } from 'react-native';
+import React, { useState } from 'react'
+import { Text, StyleSheet, Image, TextInput, ImageBackground, ScrollView, View, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native';
 
 
 
@@ -8,72 +8,134 @@ import Div from '../components/div';
 import NkTextInput from '../components/nkTextInput';
 import NkButton from '../components/nkButton';
 
-import { NwClass } from '../constants/NwClass';
+// import { NwClass } from '../constants/NwClass';
+import { useStyles } from '../functions/Orientation';
 
 
 const LoginScreen = props => {
+    const [errorMessage, setErrorMessage] = useState();
+    const [username, setUsername] = useState();
+    const [password, setPassword] = useState();
+
+
+    const NwClass = useStyles();
+
+
+    const Login = () => {
+        fetch("https://noahv9.promptus8.com/NOAHAPI/api/get/NOAHAuth", {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'username': `${username}`,
+                'password': `${password}`,
+                'secretkey': 'Askfusqlrcopr',
+            }
+        })
+
+            .then((response) => response.json())
+            .then((responseData) => {
+                console.log(
+                    "POST Response",
+                    "Response Body -> " + JSON.stringify(responseData)
+                )
+
+                // let jsonres = JSON.parse(responseData);
+
+                console.log(responseData.status);
+                if (responseData.status == 200) {
+                    props.navigation.navigate('HomeDrawer');
+                } else {
+                    setErrorMessage(responseData.message)
+
+                }
+                // login 
+            })
+            .done((responseData) => {
+                //
+            }
+            );
+
+
+        // props.navigation.navigate('HomeDrawer')
+
+    }
+
+
     return (
-
-        <ImageBackground
-            style={styles.container}
-            source={require('../assets/LoginIcons/login_bg.png')}
-
+        <TouchableWithoutFeedback
+            onPress={Keyboard.dismiss}
         >
-            <ScrollView>
-                <Div>
-                    <Div style={[NwClass.col, NwClass.col_4,]}>
+            <ImageBackground
+                style={styles.container}
+            // source={require('../assets/LoginIcons/login_bg.png')}
+            >
+                <ScrollView>
+                    <Div>
 
-                    </Div>
+                        <Div style={[NwClass.col, NwClass.col_12,]}>
+                            <Div style={styles.formItems}>
+                                <Image source={require('../assets/LoginIcons/noah_logo_5kb-with-margin-20x10-lower-quality.png')} />
+                                <Div style={{ marginHorizontal: 10, }}>
+                                    <Text style={styles.formGreetings}>Sign in to NOAH</Text>
+                                    <Text style={styles.formText}>Enter your credentials to access your account</Text>
 
-                    <Div style={[NwClass.col, NwClass.col_8, styles.form]}>
-                        <Div style={styles.formItems}>
-                            <Image source={require('../assets/LoginIcons/noah_logo_5kb-with-margin-20x10-lower-quality.png')} />
-                            <Div style={{ marginHorizontal: 10, }}>
-                                <Text style={styles.formGreetings}>Sign in to NOAH</Text>
-                                <Text style={styles.formText}>Enter your credentials to access your account</Text>
-
-                                <Div style={styles.textboxContainer}>
-                                    <NkTextInput
-                                        placeholder='Username'
-                                        style={styles.textInput}
-                                        placeholderTextColor='#b6becc'
-                                    />
-                                    <NkTextInput
-                                        placeholder='Password'
-                                        style={styles.textInput}
-                                        placeholderTextColor='#b6becc'
-                                    />
-                                    <Div style={styles.captchaContainer}>
-                                        <Text style={styles.captchaText}>PLEASE ENTER THE TEXT FROM THE IMAGE </Text>
-                                        <View style={{ height: 70, overflow: 'hidden' }}>
-                                            <ImageBackground source={require('../assets/LoginIcons/bg-icon-background-captcha.png')}
-                                                style={styles.captcha}
-                                                resizeMode='repeat'
+                                    <Div style={styles.textboxContainer}>
+                                        <KeyboardAvoidingView
+                                            behavior='height'
+                                        >
+                                            <TextInput
+                                                placeholder='Username'
+                                                style={styles.textInput}
+                                                placeholderTextColor='#b6becc'
+                                                onChangeText={text => setUsername(text)}
+                                                value={username}
+                                                returnKeyType="next"
+                                                focus
+                                                onSubmitEditing={() => { this.secondTextInput.focus(); }}
+                                                blurOnSubmit={false}
                                             />
-                                        </View>
+                                            <TextInput
+                                                placeholder='Password'
+                                                style={styles.textInput}
+                                                placeholderTextColor='#b6becc'
+                                                onChangeText={text => setPassword(text)}
+                                                value={password}
+                                                secureTextEntry={true}
+                                                ref={(input) => { this.secondTextInput = input; }}
+                                            />
+                                            <Div style={styles.captchaContainer}>
+                                                <Text style={styles.captchaText}>PLEASE ENTER THE TEXT FROM THE IMAGE </Text>
+                                                <View style={{ height: 70, overflow: 'hidden' }}>
+                                                    <ImageBackground source={require('../assets/LoginIcons/bg-icon-background-captcha.png')}
+                                                        style={styles.captcha}
+                                                        resizeMode='cover'
+                                                    />
+                                                </View>
 
 
-                                        <NkTextInput
-                                            style={styles.textInput2}
-                                        />
+                                                <NkTextInput
+                                                    style={styles.textInput2}
+                                                />
+                                            </Div>
+                                            <NkButton
+                                                style={[NwClass.btn_default, { marginTop: 20, height: 60, backgroundColor: '#1e52a3' }]}
+                                                titleStyle={NwClass.btnText_default}
+                                                buttonTitle
+                                                title='Login'
+                                                customClick={() => Login()}
+                                            />
+                                            <Text style={styles.errorMessage}>{errorMessage}</Text>
+                                            <Text style={styles.forgetPassword}>Forgot Password</Text>
+                                        </KeyboardAvoidingView>
                                     </Div>
-                                    <NkButton
-                                        style={[NwClass.btn_default, { marginTop: 20, height: 60, backgroundColor: '#1e52a3' }]}
-                                        titleStyle={NwClass.btnText_default}
-                                        buttonTitle
-                                        title='Login'
-                                        customClick={() => props.navigation.navigate('HomeDrawer')}
-                                    />
-                                    <Text style={styles.errorMessage}>You have entered an invalid username/password. Please try again. Thank you.</Text>
-                                    <Text style={styles.forgetPassword}>Forgot Password</Text>
                                 </Div>
                             </Div>
                         </Div>
                     </Div>
-                </Div>
-            </ScrollView>
-        </ImageBackground>
-
+                </ScrollView>
+            </ImageBackground>
+        </TouchableWithoutFeedback>
     )
 }
 
@@ -84,10 +146,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         alignItems: 'center',
         padding: 0
-    },
-    form: {
-        width: 600,
-        margin: 0
     },
     formItems: {
         marginHorizontal: 50,

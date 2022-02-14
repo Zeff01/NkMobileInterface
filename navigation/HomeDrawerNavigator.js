@@ -44,7 +44,7 @@ const HomeDrawerNavigator = props => {
             }}
         >
             <Drawer.Screen
-                name='Home'
+                name='AppNavigator'
                 component={AppNavigator}
                 options={{
                     headerTitle: 'NOAH Buisness Applications',
@@ -60,6 +60,7 @@ const HomeDrawerNavigator = props => {
                     }
                 }}
             />
+
             <Drawer.Screen
                 name='Budget'
                 component={BudgetScreen}
