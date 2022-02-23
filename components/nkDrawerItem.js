@@ -12,7 +12,6 @@ const NkDrawerItem = props => {
                 <MaterialCommunityIcons
                     name={props.iconName}
                     size={25}
-                    color='red'
                 />
                 <Text style={styles.title}>{props.title}</Text>
             </View>
@@ -20,7 +19,6 @@ const NkDrawerItem = props => {
                 <MaterialCommunityIcons
                     name='menu-right-outline'
                     size={15}
-                    color='red'
                 />
             </View>
 
@@ -49,7 +47,6 @@ const styles = StyleSheet.create({
         fontFamily: 'AbadiMTStd',
         marginLeft: 25,
         fontSize: 15,
-        color: 'red'
     }
 });
 export default NkDrawerItem

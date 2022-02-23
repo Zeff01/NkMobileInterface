@@ -281,7 +281,6 @@ export function useStyles() {
       borderWidth: .6,
       borderColor: '#aaaaaa',
       fontFamily: 'AbadiMTStd',
-
     },
     txtarea: {
       height: 70,

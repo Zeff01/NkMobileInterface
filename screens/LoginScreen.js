@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         borderWidth: 1,
         borderColor: '#bec8d9',
-        height: 60,
+        height: 50,
     },
     textInput2: {
         marginVertical: 20,

@@ -1,25 +1,37 @@
 import React, { useState } from 'react'
-import { Alert, Modal, StyleSheet, Text, Image, View, TouchableOpacity } from "react-native";
+import { Alert, Modal, StyleSheet, Text, Image, TouchableOpacity, } from "react-native";
+import { NavigationContainer, useNavigation } from '@react-navigation/native'
 
-import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import Colors from '../constants/Colors';
 // import { NwClass } from '../constants/NwClass';
 import { useStyles } from '../functions/Orientation';
 import Div from './div';
 import NkButton from './nkButton';
-import NkTextInput from './nkTextInput'
-
-import NkSettingsEmailModal from './nkSettingsEmailModal'
-import NkSetttingsContacts from './nkSettingsContacts'
-
 
 const NkSettingsModal = props => {
     const NwClass = useStyles();
+    // const { navigate } = this.props.navigation
+    const navigation = useNavigation()
 
     const [modalVisible, setModalVisible] = useState(false);
+
+
+    const ChangePasswordHandler = props => {
+        setModalVisible(!modalVisible)
+        navigation.navigate('ChangePassword')
+    }
+    const ChangeEmailAddHandler = props => {
+        setModalVisible(!modalVisible)
+        navigation.navigate('ChangeEmailAddScreen')
+    }
+    const ChangeNumberHandler = props => {
+        setModalVisible(!modalVisible)
+        navigation.navigate('ChangeNumberScreen')
+    }
+
     return (
-        <Div style={styles.centeredView}>
+        <Div style={styles.iconView}>
             <Modal
                 animationType="slide"
                 transparent={true}
@@ -47,78 +59,48 @@ const NkSettingsModal = props => {
                                         title='X'
                                         titleStyle={styles.titleIconStyle}
                                         customClick={() => setModalVisible(!modalVisible)}
+                                        buttonTitle
                                     />
+
                                 </Div>
                                 <Div style={styles.borderDivider}></Div>
 
                                 <Div style={styles.contentContainer}>
-                                    <Div style={styles.iconContentContainer}>
-                                        <TouchableOpacity style={styles.iconContainer}
-                                            onPress={() => setModalVisible(!modalVisible)}
-                                        >
 
+                                    <Div style={styles.contentTitleContainer}>
+                                        <TouchableOpacity
+                                            onPress={() => ChangePasswordHandler()}
+                                            style={styles.titleContainer}
+                                        >
+                                            <Image
+                                                source={require('../assets//HomepageIcons/icon-nw_v2_key_colored_22x22_72px.png')}
+                                                style={styles.contentIcon}
+                                            />
+                                            <Text style={styles.contentTitle}>Change Password</Text>
                                         </TouchableOpacity>
                                         <TouchableOpacity
-                                            style={styles.iconContainer}
-                                            onPress={() => setModalVisible(!modalVisible)}
+                                            onPress={() => ChangeEmailAddHandler()}
+                                            style={styles.titleContainer}
                                         >
-                                            <NkSettingsEmailModal />
+                                            <Image source={require('../assets//HomepageIcons/icon-nw_v2_email_colored_22x22_72px.png')}
+                                                style={styles.contentIcon}
+                                            />
+                                            <Text style={styles.contentTitle}>Email Address</Text>
                                         </TouchableOpacity>
-                                        <TouchableOpacity style={styles.iconContainer}>
-                                            <NkSetttingsContacts />
+                                        <TouchableOpacity
+                                            onPress={() => ChangeNumberHandler()}
+                                            style={styles.titleContainer}
+                                        >
+                                            <Image source={require('../assets//HomepageIcons/icon-nw_v2_telephone_colored_22x22_72px.png')}
+                                                style={styles.contentIcon}
+                                            />
+                                            <Text style={styles.contentTitle}>Contacts</Text>
                                         </TouchableOpacity>
-
-                                    </Div>
-                                    <Div style={styles.selectBoxContainer}>
-                                        <Text style={styles.contentTitle}>Change Password</Text>
-
                                         <Div style={[NwClass.row, NwClass.row_parent]}>
                                             <Div style={[NwClass.row,]}>
-                                                <Div style={[NwClass.col, NwClass.col_4]}>
-                                                    <Text style={styles.inputLabel}>Username</Text>
-                                                </Div>
-                                                <Div style={[NwClass.col, NwClass.col_6]}>
-                                                    <NkTextInput />
-                                                </Div>
-                                                <Div style={[NwClass.col, NwClass.col_4]}>
-                                                    <Text style={styles.inputLabel}>Description</Text>
-                                                </Div>
-                                                <Div style={[NwClass.col, NwClass.col_6]}>
-                                                    <NkTextInput />
-                                                </Div>
-                                                <Div style={[NwClass.col, NwClass.col_4]}>
-                                                    <Text style={styles.inputLabel}>Password</Text>
-                                                </Div>
-                                                <Div style={[NwClass.col, NwClass.col_6]}>
-                                                    <NkTextInput />
-                                                </Div>
-                                                <Div style={[NwClass.col, NwClass.col_4]}>
-                                                    <Text style={styles.inputLabel}>New Password</Text>
-                                                </Div>
-                                                <Div style={[NwClass.col, NwClass.col_6]}>
-                                                    <NkTextInput />
-                                                </Div>
-                                                <Div style={[NwClass.col, NwClass.col_4]}>
-                                                    <Text style={styles.inputLabel}>Confirm Password</Text>
-                                                </Div>
-                                                <Div style={[NwClass.col, NwClass.col_6]}>
-                                                    <NkTextInput />
-                                                </Div>
-                                                <Div style={[NwClass.col, NwClass.col_4]}>
-
-                                                </Div>
-                                                <Div style={[NwClass.col, NwClass.col_6]}>
-                                                    <NkButton
-                                                        style={NwClass.btn_default}
-                                                        title='Update Password'
-                                                        titleStyle={styles.UpdatepasswordStyle}
-                                                        customClick={() => setModalVisible(!modalVisible)}
-                                                    />
-                                                </Div>
 
                                             </Div>
                                         </Div>
-
                                     </Div>
                                 </Div>
                             </Div>
@@ -126,13 +108,6 @@ const NkSettingsModal = props => {
                     </Div>
                 </Div>
             </Modal >
-            {/* <NkButton
-                style={NwClass.btn_default}
-                customClick={() => setModalVisible(true)}
-                buttonTitle
-                title='Show Alert Box v2'
-                titleStyle={styles.textStyle}
-            /> */}
             <TouchableOpacity
                 onPress={() => setModalVisible(true)}>
                 <Image
@@ -148,11 +123,18 @@ const NkSettingsModal = props => {
 
 
 const styles = StyleSheet.create({
+    iconView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: 'center',
+    },
     centeredView: {
         flex: 1,
         justifyContent: "center",
-        alignItems: "center",
+        alignItems: 'center',
+        backgroundColor: 'rgba(0,0,0,0.2)',
     },
+
     wrap: {
         backgroundColor: "white",
         borderRadius: 12,
@@ -169,7 +151,7 @@ const styles = StyleSheet.create({
         elevation: 10,
         margin: 5,
         width: 800,
-        height: 550
+        alignSelf: 'center',
     },
     title: {
         flexDirection: 'row',
@@ -194,7 +176,7 @@ const styles = StyleSheet.create({
     },
     titleIconStyle: {
         color: 'red',
-        fontSize: 25
+        fontSize: 50
     },
     borderDivider: {
         borderBottomWidth: 4,
@@ -229,18 +211,26 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 20
     },
-    selectBoxContainer: {
+    contentTitleContainer: {
         flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'center',
+
         padding: 10
+    },
+    titleContainer: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    contentIcon: {
+        width: 40,
+        height: 40
     },
     contentTitle: {
         color: '#657688',
         fontWeight: '900',
         fontSize: 25,
-        marginLeft: 10,
-        alignSelf: 'flex-start'
+        marginLeft: 15,
+        margin: 10
     },
     inputLabel: {
         fontSize: 20,

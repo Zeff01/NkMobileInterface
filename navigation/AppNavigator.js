@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native'
+import { NavigationContainer, useNavigation } from '@react-navigation/native'
 
 
 import MainTitleNavigator from './MainTitleNavigator';
@@ -10,6 +10,9 @@ import DemoScreen from '../screens/DemoScreen';
 import HomepageScreen from '../screens/HomepageScreen';
 import ColorPaletteScreen from '../screens/ColorPaletteScreen';
 import LookUpScreen from '../screens/LookUpScreen'
+import ChangePasswordScreen from '../screens/ChangePasswordScreen'
+import ChangeEmailAddScreen from '../screens/ChangeEmailAddScreen';
+import ChangeNumberScreen from '../screens/ChangeNumberScreen';
 import Colors from '../constants/Colors';
 
 
@@ -26,6 +29,24 @@ const AppNavigator = props => {
                 component={HomepageScreen}
                 options={{
                     headerShown: false
+                }}
+            />
+            <Stack.Screen
+                name="ChangePassword"
+                component={ChangePasswordScreen}
+                options={{
+                }}
+            />
+            <Stack.Screen
+                name="ChangeEmailAddScreen"
+                component={ChangeEmailAddScreen}
+                options={{
+                }}
+            />
+            <Stack.Screen
+                name="ChangeNumberScreen"
+                component={ChangeNumberScreen}
+                options={{
                 }}
             />
             <Stack.Screen

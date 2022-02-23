@@ -195,7 +195,12 @@ const HomepageScreen = props => {
                                                 <Div style={styles.widgetContainer}>
                                                     <Div style={[styles.header, styles.widget]}>
                                                         <Text style={[styles.widgetTitle,]}>E0101</Text>
-                                                        <Text style={styles.widgetText}>Icon here</Text>
+                                                        <Div style={styles.widgetRing}>
+                                                            <Image source={require('../assets/HomepageIcons/menuitem-icon-30x30p-design.png')}
+                                                                style={styles.widgetIcon}
+                                                            />
+                                                        </Div>
+
                                                     </Div>
                                                     <Div style={[styles.details, styles.widget]}>
                                                         <Text style={[styles.widgetTitle]}>Daily Accomplishment Report</Text>
@@ -205,8 +210,13 @@ const HomepageScreen = props => {
                                                         <Text style={styles.widgetText}>Billing and Collection Trade</Text>
                                                         <NkButton
                                                             iconButton
-                                                            title={<Ionicons name='arrow-forward' size={25} color='black' />}
-
+                                                            title={<Div>
+                                                                <Ionicons name='arrow-forward'
+                                                                    size={35}
+                                                                    color='white'
+                                                                    style={styles.widgetArrow}
+                                                                />
+                                                            </Div>}
                                                         />
                                                     </Div>
                                                 </Div>
@@ -215,7 +225,11 @@ const HomepageScreen = props => {
                                                 <Div style={styles.widgetContainer}>
                                                     <Div style={[styles.header, styles.widget]}>
                                                         <Text style={[styles.widgetTitle]}>E0101</Text>
-                                                        <Text style={styles.widgetText}>Icon here</Text>
+                                                        <Div style={styles.widgetRing}>
+                                                            <Image source={require('../assets/HomepageIcons/menuitem-icon-30x30p-design.png')}
+                                                                style={styles.widgetIcon}
+                                                            />
+                                                        </Div>
                                                     </Div>
                                                     <Div style={[styles.details, styles.widget]}>
                                                         <Text style={[styles.widgetTitle]}>Daily Accomplishment Report</Text>
@@ -225,8 +239,13 @@ const HomepageScreen = props => {
                                                         <Text style={styles.widgetText}>Billing and Collection Trade</Text>
                                                         <NkButton
                                                             iconButton
-                                                            title={<Ionicons name='arrow-forward' size={25} color='black' />}
-
+                                                            title={<Div>
+                                                                <Ionicons name='arrow-forward'
+                                                                    size={35}
+                                                                    color='white'
+                                                                    style={styles.widgetArrow}
+                                                                />
+                                                            </Div>}
                                                         />
                                                     </Div>
                                                 </Div>
@@ -235,7 +254,11 @@ const HomepageScreen = props => {
                                                 <Div style={styles.widgetContainer}>
                                                     <Div style={[styles.header, styles.widget]}>
                                                         <Text style={[styles.widgetTitle]}>E0101</Text>
-                                                        <Text style={styles.widgetText}>Icon here</Text>
+                                                        <Div style={styles.widgetRing}>
+                                                            <Image source={require('../assets/HomepageIcons/menuitem-icon-30x30p-design.png')}
+                                                                style={styles.widgetIcon}
+                                                            />
+                                                        </Div>
                                                     </Div>
                                                     <Div style={[styles.details, styles.widget]}>
                                                         <Text style={[styles.widgetTitle]}>Daily Accomplishment Report</Text>
@@ -245,8 +268,13 @@ const HomepageScreen = props => {
                                                         <Text style={styles.widgetText}>Billing and Collection Trade</Text>
                                                         <NkButton
                                                             iconButton
-                                                            title={<Ionicons name='arrow-forward' size={25} color='black' />}
-
+                                                            title={<Div>
+                                                                <Ionicons name='arrow-forward'
+                                                                    size={35}
+                                                                    color='white'
+                                                                    style={styles.widgetArrow}
+                                                                />
+                                                            </Div>}
                                                         />
                                                     </Div>
                                                 </Div>
@@ -255,7 +283,11 @@ const HomepageScreen = props => {
                                                 <Div style={styles.widgetContainer}>
                                                     <Div style={[styles.header, styles.widget]}>
                                                         <Text style={[styles.widgetTitle]}>E0101</Text>
-                                                        <Text style={styles.widgetText}>Icon here</Text>
+                                                        <Div style={styles.widgetRing}>
+                                                            <Image source={require('../assets/HomepageIcons/menuitem-icon-30x30p-design.png')}
+                                                                style={styles.widgetIcon}
+                                                            />
+                                                        </Div>
                                                     </Div>
                                                     <Div style={[styles.details, styles.widget]}>
                                                         <Text style={[styles.widgetTitle]}>Daily Accomplishment Report</Text>
@@ -265,8 +297,13 @@ const HomepageScreen = props => {
                                                         <Text style={styles.widgetText}>Billing and Collection Trade</Text>
                                                         <NkButton
                                                             iconButton
-                                                            title={<Ionicons name='arrow-forward' size={25} color='black' />}
-
+                                                            title={<Div>
+                                                                <Ionicons name='arrow-forward'
+                                                                    size={35}
+                                                                    color='white'
+                                                                    style={styles.widgetArrow}
+                                                                />
+                                                            </Div>}
                                                         />
                                                     </Div>
                                                 </Div>
@@ -585,6 +622,22 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         fontFamily: 'AbadiMTStd',
         fontSize: 18
+    },
+    widgetRing: {
+        borderRadius: 30,
+        borderWidth: 5,
+        borderColor: '#7491ad',
+        padding: 0,
+    },
+    widgetIcon: {
+        width: 50,
+        height: 50,
+
+    },
+    widgetArrow: {
+        backgroundColor: '#28396f',
+        borderRadius: 50,
+        padding: 5
     },
     header: {
         flexDirection: 'row',

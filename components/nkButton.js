@@ -12,6 +12,7 @@ const NkButton = props => {
     const dimheight = Dimensions.get('window').height
     const dimwidth = Dimensions.get('window').width
 
+
     if (dimwidth <= 900) {
         return (
             // <LinearGradient
