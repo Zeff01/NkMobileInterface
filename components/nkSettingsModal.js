@@ -109,7 +109,9 @@ const NkSettingsModal = props => {
                 </Div>
             </Modal >
             <TouchableOpacity
-                onPress={() => setModalVisible(true)}>
+                onPress={() => setModalVisible(true)}
+                style={[styles.userIconContainer, props.extraStyle]}
+            >
                 <Image
                     source={require('../assets//HomepageIcons/icon-nw_v2_settings_colored_22x22_72px.png')}
                     style={[styles.userIcon, styles.settingsIcon]}
@@ -127,6 +129,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: 'center',
+        marginHorizontal: 10
     },
     centeredView: {
         flex: 1,
@@ -268,9 +271,16 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
     settingsIcon: {
+        width: 35,
+        height: 35,
+    },
+    userIconContainer: {
         backgroundColor: '#ddd3ed',
-        width: 40,
-        height: 40,
+        borderRadius: 50,
+        width: 50,
+        height: 50,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     userIcon: {
         marginHorizontal: 10,

@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { Alert, Modal, StyleSheet, Text, Image, View, TouchableOpacity } from "react-native";
 
-import Ionicons from 'react-native-vector-icons/Ionicons'
-import { back } from 'react-native/Libraries/Animated/Easing';
 
 import Colors from '../constants/Colors';
 // import { NwClass } from '../constants/NwClass';
@@ -13,8 +11,6 @@ import NkButton from './nkButton';
 
 const nkCompanyModal = props => {
     const NwClass = useStyles();
-
-
     const [modalVisible, setModalVisible] = useState(false);
 
     return (
@@ -97,10 +93,12 @@ const nkCompanyModal = props => {
                 titleStyle={styles.textStyle}
             /> */}
             <TouchableOpacity
-                onPress={() => setModalVisible(true)}>
+                onPress={() => setModalVisible(true)}
+                style={[styles.userIconContainer, props.extraStyle]}
+            >
                 <Image
                     source={require('../assets//HomepageIcons/icon-nw_v2_company_colored_22x22_72px.png')}
-                    style={[styles.userIcon, styles.companyIcon]}
+                    style={[styles.userIcon, styles.companyIcon,]}
                 />
             </TouchableOpacity>
 
@@ -114,6 +112,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+        marginHorizontal: 10
     },
     wrap: {
         backgroundColor: "white",
@@ -154,7 +153,8 @@ const styles = StyleSheet.create({
     boxImage: {
         width: 40,
         height: 40,
-        alignSelf: 'center'
+        alignSelf: 'center',
+
     },
     textContainer: {
         height: '80%',
@@ -193,15 +193,22 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
     companyIcon: {
-        backgroundColor: '#ddd3ed',
-        width: 40,
-        height: 40,
+        width: 35,
+        height: 35,
     },
     userIcon: {
         marginHorizontal: 10,
         borderRadius: 50,
         width: 60,
         height: 60,
+    },
+    userIconContainer: {
+        backgroundColor: '#ddd3ed',
+        borderRadius: 50,
+        width: 50,
+        height: 50,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
 });
 

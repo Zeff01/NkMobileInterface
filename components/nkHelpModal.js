@@ -77,7 +77,9 @@ const NkAlertModal = props => {
                 titleStyle={styles.textStyle}
             /> */}
             <TouchableOpacity
-                onPress={() => setModalVisible(true)}>
+                onPress={() => setModalVisible(true)}
+                style={[styles.userIconContainer, props.extraStyle]}
+            >
                 <Image
                     source={require('../assets//HomepageIcons/icon-nw_v2_help_colored_22x22_72px.png')}
                     style={[styles.userIcon, styles.helpIcon]}
@@ -94,6 +96,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+        marginHorizontal: 10
     },
     wrap: {
         backgroundColor: "white",
@@ -212,9 +215,17 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
     helpIcon: {
-        backgroundColor: '#ddd3ed',
-        width: 40,
-        height: 40,
+
+        width: 35,
+        height: 35,
+    },
+    userIconContainer: {
+        backgroundColor: '#ffe5bc',
+        borderRadius: 50,
+        width: 50,
+        height: 50,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     userIcon: {
         marginHorizontal: 10,

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, ImageBackground } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons'
@@ -11,10 +11,49 @@ import NkButton from '../components/nkButton';
 import NkCompanyModal from '../components/nkCompanyModal'
 import NkHelpModal from '../components/nkHelpModal'
 import NkSettingsModal from '../components/nkSettingsModal'
+import SQLite from 'react-native-sqlite-storage'
+
+const db = SQLite.openDatabase(
+    {
+        name: 'Login',
+        location: 'default'
+    },
+    () => { },
+    error => console.log("ehem", error)
+)
 
 const HomepageScreen = props => {
-
+    const [username, setUsername] = useState();
+    const [password, setPassword] = useState();
     const NwClass = useStyles();
+
+
+    useEffect(() => {
+        getData();
+    }, [])
+
+    const getData = () => {
+        try {
+            db.transaction((tx) => {
+                tx.executeSql(
+                    "SELECT Username, Password FROM Users",
+                    [],
+                    (tx, results) => {
+                        console.log(results)
+                        var len = results.rows.length
+                        if (len > 0) {
+                            var userName = results.rows.item(0).Username;
+                            var passWord = results.rows.item(0).Password;
+                            setUsername(userName)
+                            setPassword(passWord)
+                        }
+                    }
+                )
+            })
+        } catch (error) {
+            console.log("hiii", error)
+        }
+    }
 
     return (
         <ScrollView style={styles.container}>
@@ -22,7 +61,7 @@ const HomepageScreen = props => {
                 <Div style={[NwClass.col, NwClass.col_12,]}>
                     {/* Greetings and header widget */}
                     <Div style={NwClass.row}>
-                        <Div style={[NwClass.col, NwClass.col_8,]}>
+                        <Div style={[NwClass.col, NwClass.col_7,]}>
 
                             <LinearGradient
                                 colors={['#28396f', '#1e6dc3',]}
@@ -55,13 +94,13 @@ const HomepageScreen = props => {
                                                     <Div style={styles.boxItems}>
                                                         <Div style={styles.boxImageContainer}>
                                                             <Image
-                                                                source={require('../assets/HomepageIcons/icon-nw_v2_pending_task_colored_44x44_300px.png')}
+                                                                source={require('../assets/HomepageIcons/pending-task-icon-24x24-design-colored.png')}
                                                                 style={styles.boxImage}
                                                             />
                                                         </Div>
                                                         <Div style={styles.boxDetails}>
                                                             <Text style={styles.boxCount}>15</Text>
-                                                            <Text style={styles.boxLabel}>Pending Task</Text>
+                                                            <Text style={styles.boxLabel}>{username}</Text>
                                                         </Div>
                                                     </Div>
                                                 </ImageBackground>
@@ -81,7 +120,7 @@ const HomepageScreen = props => {
                                                     <Div style={styles.boxItems}>
                                                         <Div style={styles.boxImageContainer}>
                                                             <Image
-                                                                source={require('../assets/HomepageIcons/icon-nw_v2_assigned_activities_colored_44x44_300px.png')}
+                                                                source={require('../assets/HomepageIcons/assigned-activities-icon-24x24-design-colored.png')}
                                                                 style={styles.boxImage}
                                                             />
                                                         </Div>
@@ -96,7 +135,7 @@ const HomepageScreen = props => {
                                     </Div>
                                 </Div>
                                 {/*----------------------------------------------------- border */}
-                                <Div style={[NwClass.row, NwClass.row_parent]}>
+                                <Div style={[NwClass.row, NwClass.row_parent,]}>
                                     <Div style={[NwClass.col, NwClass.col_12,]}>
                                         <Div style={[styles.boxContainer,]}>
                                             <LinearGradient
@@ -110,7 +149,7 @@ const HomepageScreen = props => {
                                                     <Div style={styles.boxItems}>
                                                         <Div style={styles.boxImageContainer}>
                                                             <Image
-                                                                source={require('../assets/HomepageIcons/icon-nw_v2_findings_colored_44x44_300px.png')}
+                                                                source={require('../assets/HomepageIcons/findings-icon-24x24-design-colored.png')}
                                                                 style={styles.boxImage}
                                                             />
                                                         </Div>
@@ -124,7 +163,9 @@ const HomepageScreen = props => {
                                         </Div>
                                     </Div>
                                 </Div>
-                                <Div style={[NwClass.row, NwClass.row_parent]}>
+
+                                {/*----------------------------------------------------- border */}
+                                <Div style={[NwClass.row, NwClass.row_parent, { margin: 0 }]}>
                                     <Div style={[NwClass.col, NwClass.col_6,]}>
                                         <Div style={styles.boxContainer}>
                                             <LinearGradient
@@ -138,7 +179,7 @@ const HomepageScreen = props => {
                                                     <Div style={styles.boxItems}>
                                                         <Div style={styles.boxImageContainer}>
                                                             <Image
-                                                                source={require('../assets/HomepageIcons/icon-nw_v2_tickets_colored_44x44_300px.png')}
+                                                                source={require('../assets/HomepageIcons/ticket-icon-24x24-design-colored.png')}
                                                                 style={styles.boxImage}
                                                             />
                                                         </Div>
@@ -164,7 +205,7 @@ const HomepageScreen = props => {
                                                     <Div style={styles.boxItems}>
                                                         <Div style={styles.boxImageContainer}>
                                                             <Image
-                                                                source={require('../assets/HomepageIcons/icon-nw_v2_accomplished_colored_44x44_300px-v2.png')}
+                                                                source={require('../assets/HomepageIcons/pending-task-icon-24x24-design-colored.png')}
                                                                 style={styles.boxImage}
                                                             />
                                                         </Div>
@@ -184,11 +225,13 @@ const HomepageScreen = props => {
                             </Div>
                             <Div style={[NwClass.row, NwClass.row_parent]}>
                                 <Div style={[NwClass.col, NwClass.col_5, NwClass.col_parent, { width: '100%', }]}>
-                                    <Image
-                                        source={require('../assets/HomepageIcons/noah-recent-left-vector-420x420x200px.png')}
-                                        style={styles.noahImage}
-                                        resizeMode='cover'
-                                    />
+                                    <Div style={styles.noahImageContainer}>
+                                        <Image
+                                            source={require('../assets/HomepageIcons/noah-recent-left-vector-420x420x200px.png')}
+                                            style={styles.noahImage}
+                                            resizeMode='cover'
+                                        />
+                                    </Div>
                                     <Div style={[NwClass.col, NwClass.col_12, NwClass.col_parent,]}>
                                         <Div style={[NwClass.row, NwClass.row_parent]}>
                                             <Div style={[NwClass.col, NwClass.col_6,]}>
@@ -203,7 +246,7 @@ const HomepageScreen = props => {
 
                                                     </Div>
                                                     <Div style={[styles.details, styles.widget]}>
-                                                        <Text style={[styles.widgetTitle]}>Daily Accomplishment Report</Text>
+                                                        <Text style={[styles.widgetTitle]} numberOfLines={1}>Daily Accomplishment Report</Text>
                                                         <Text style={styles.widgetText}>Menuitem</Text>
                                                     </Div>
                                                     <Div style={[styles.module_code, styles.widget]}>
@@ -212,7 +255,7 @@ const HomepageScreen = props => {
                                                             iconButton
                                                             title={<Div>
                                                                 <Ionicons name='arrow-forward'
-                                                                    size={35}
+                                                                    size={30}
                                                                     color='white'
                                                                     style={styles.widgetArrow}
                                                                 />
@@ -232,7 +275,7 @@ const HomepageScreen = props => {
                                                         </Div>
                                                     </Div>
                                                     <Div style={[styles.details, styles.widget]}>
-                                                        <Text style={[styles.widgetTitle]}>Daily Accomplishment Report</Text>
+                                                        <Text style={[styles.widgetTitle]} numberOfLines={1}>Daily Accomplishment Report</Text>
                                                         <Text style={styles.widgetText}>Menuitem</Text>
                                                     </Div>
                                                     <Div style={[styles.module_code, styles.widget]}>
@@ -241,7 +284,7 @@ const HomepageScreen = props => {
                                                             iconButton
                                                             title={<Div>
                                                                 <Ionicons name='arrow-forward'
-                                                                    size={35}
+                                                                    size={30}
                                                                     color='white'
                                                                     style={styles.widgetArrow}
                                                                 />
@@ -261,7 +304,7 @@ const HomepageScreen = props => {
                                                         </Div>
                                                     </Div>
                                                     <Div style={[styles.details, styles.widget]}>
-                                                        <Text style={[styles.widgetTitle]}>Daily Accomplishment Report</Text>
+                                                        <Text style={[styles.widgetTitle]} numberOfLines={1}>Daily Accomplishment Report</Text>
                                                         <Text style={styles.widgetText}>Menuitem</Text>
                                                     </Div>
                                                     <Div style={[styles.module_code, styles.widget]}>
@@ -270,7 +313,7 @@ const HomepageScreen = props => {
                                                             iconButton
                                                             title={<Div>
                                                                 <Ionicons name='arrow-forward'
-                                                                    size={35}
+                                                                    size={30}
                                                                     color='white'
                                                                     style={styles.widgetArrow}
                                                                 />
@@ -290,7 +333,7 @@ const HomepageScreen = props => {
                                                         </Div>
                                                     </Div>
                                                     <Div style={[styles.details, styles.widget]}>
-                                                        <Text style={[styles.widgetTitle]}>Daily Accomplishment Report</Text>
+                                                        <Text style={[styles.widgetTitle]} numberOfLines={1}>Daily Accomplishment Report</Text>
                                                         <Text style={styles.widgetText}>Menuitem</Text>
                                                     </Div>
                                                     <Div style={[styles.module_code, styles.widget]}>
@@ -299,7 +342,7 @@ const HomepageScreen = props => {
                                                             iconButton
                                                             title={<Div>
                                                                 <Ionicons name='arrow-forward'
-                                                                    size={35}
+                                                                    size={30}
                                                                     color='white'
                                                                     style={styles.widgetArrow}
                                                                 />
@@ -314,7 +357,7 @@ const HomepageScreen = props => {
                             </Div>
                         </Div>
 
-                        <Div style={[NwClass.col, NwClass.col_4, { justifyContent: 'flex-start' }]}>
+                        <Div style={[NwClass.col, NwClass.col_5, { justifyContent: 'flex-start' }]}>
                             <Div style={[NwClass.col, NwClass.col_12]}>
                                 <Div style={styles.menuContainer}>
                                     <Div style={styles.profileContainer}>
@@ -510,12 +553,9 @@ const HomepageScreen = props => {
                                     </Div>
                                 </Div>
                             </Div>
-
                         </Div>
                     </Div>
-
                 </Div>
-
             </Div>
         </ScrollView>
     )
@@ -534,6 +574,10 @@ const styles = StyleSheet.create({
         padding: 10,
 
     },
+    greetingsTextContainer: {
+        padding: 10
+    },
+
     greetings: {
         color: '#fff',
         fontSize: 25,
@@ -559,34 +603,35 @@ const styles = StyleSheet.create({
     box: {
         width: '100%',
         backgroundColor: 'black',
-        height: 150,
-        marginHorizontal: 8,
+        height: 120,
         borderRadius: 20,
-        overflow: 'hidden'
     },
     boxItems: {
         flexDirection: 'row',
         padding: 20,
         alignItems: 'center',
-        height: '100%'
+        height: '100%',
+
     },
     boxImageContainer: {
         backgroundColor: 'white',
-        borderRadius: 15,
-        height: 80,
+        borderRadius: 12,
+        height: 70,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        paddingHorizontal: 5
     },
     boxImage: {
-        width: 70,
-        height: 70
+        width: 60,
+        height: 60,
+
     },
     boxDetails: {
         marginLeft: 10,
         padding: 10,
     },
     boxCount: {
-        fontSize: 25,
+        fontSize: 35,
         color: 'white',
         fontWeight: '600'
     },
@@ -595,19 +640,21 @@ const styles = StyleSheet.create({
         color: 'white',
         fontWeight: '600'
     },
+    noahImageContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     noahImage: {
-        width: '100%',
-        marginVertical: 20
+        width: '90%',
     },
     widgetContainer: {
-        padding: 5,
+        padding: 15,
         borderRadius: 15,
-        borderWidth: .8,
         borderColor: '#333',
-        backgroundColor: 'white'
+        backgroundColor: 'white',
     },
     widget: {
-        marginVertical: 10,
+        marginVertical: 0,
         padding: 5,
 
     },
@@ -615,7 +662,8 @@ const styles = StyleSheet.create({
         color: '#394651',
         fontWeight: '900',
         fontFamily: 'AbadiMTStd',
-        fontSize: 25
+        fontSize: 22,
+
     },
     widgetText: {
         color: '#394651',
@@ -625,13 +673,12 @@ const styles = StyleSheet.create({
     },
     widgetRing: {
         borderRadius: 30,
-        borderWidth: 5,
         borderColor: '#7491ad',
         padding: 0,
     },
     widgetIcon: {
-        width: 50,
-        height: 50,
+        width: 40,
+        height: 40,
 
     },
     widgetArrow: {
@@ -649,6 +696,7 @@ const styles = StyleSheet.create({
     module_code: {
         flexDirection: 'row',
         justifyContent: 'space-between',
+        alignItems: 'center'
     },
     menuContainer: {
         borderWidth: .8,
@@ -685,7 +733,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         width: '100%',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     userIcon: {
         marginHorizontal: 10,
@@ -742,7 +790,7 @@ const styles = StyleSheet.create({
     notificationProfileText: {
         color: 'white',
         fontWeight: '900',
-        fontSize: 20,
+        fontSize: 25,
 
     },
     notificationSubinfo: {

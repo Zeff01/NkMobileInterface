@@ -82,7 +82,7 @@ export function useStyles() {
       flexWrap: 'wrap',
     },
     row_parent: {
-      marginBottom: 15,
+      marginBottom: 4,
     },
     col: {
       padding: 5,

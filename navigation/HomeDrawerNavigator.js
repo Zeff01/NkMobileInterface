@@ -1,6 +1,7 @@
 import React from 'react';
 import { createDrawerNavigator, } from "@react-navigation/drawer";
 import { NavigationContainer } from '@react-navigation/native'
+import { View, StyleSheet } from 'react-native';
 
 import Colors from '../constants/Colors';
 import MainTitleNavigator from './MainTitleNavigator';
@@ -22,6 +23,9 @@ import RequestManagementScreen from '../screens/RequestManagementScreen'
 import SystemsGlobalScreen from '../screens/SystemsGlobalScreen'
 import WorkflowManagementScreen from '../screens/WorkflowManagementScreen'
 import ProgressScreen from '../screens/ProgressScreen';
+
+import NkHBNotification from '../components/NkHBNotification'
+import NkHBProfile from '../components/NkHBProfile'
 
 
 
@@ -57,7 +61,15 @@ const HomeDrawerNavigator = props => {
                     headerStyle: {
                         backgroundColor: Colors.border_accent2_28396f,
                         height: 40
-                    }
+                    },
+                    headerRight: () => (
+                        <View style={styles.headerButtonContainer}>
+                            <NkHBNotification />
+                            <View style={styles.horizontalLine} />
+                            <NkHBProfile />
+                        </View>
+
+                    ),
                 }}
             />
 
@@ -122,5 +134,17 @@ const HomeDrawerNavigator = props => {
 
     )
 }
+
+const styles = StyleSheet.create({
+    headerButtonContainer: {
+        flexDirection: 'row',
+        margin: 5,
+    },
+    horizontalLine: {
+        borderRightColor: 'white',
+        borderRightWidth: 1.5,
+        marginHorizontal: 10
+    }
+});
 
 export default HomeDrawerNavigator

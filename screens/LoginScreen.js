@@ -1,7 +1,19 @@
 import { NavigationContainer } from '@react-navigation/native';
-import React, { useState } from 'react'
-import { Text, StyleSheet, Image, TextInput, ImageBackground, ScrollView, View, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native';
-
+import React, { useState, useEffect } from 'react'
+import {
+    Text,
+    StyleSheet,
+    Image,
+    TextInput,
+    ImageBackground,
+    ScrollView,
+    View,
+    KeyboardAvoidingView,
+    TouchableWithoutFeedback,
+    Keyboard,
+    Alert
+} from 'react-native';
+import SQLite from 'react-native-sqlite-storage'
 
 
 import Div from '../components/div';
@@ -11,15 +23,77 @@ import NkButton from '../components/nkButton';
 // import { NwClass } from '../constants/NwClass';
 import { useStyles } from '../functions/Orientation';
 
+const db = SQLite.openDatabase(
+    {
+        name: 'Login',
+        location: 'default'
+    },
+    () => { },
+    error => console.log(error)
+)
+
+
 
 const LoginScreen = props => {
     const [errorMessage, setErrorMessage] = useState();
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
-
-
     const NwClass = useStyles();
 
+    useEffect(() => {
+        createSQLTable();
+        getData();
+    }, [])
+
+    const createSQLTable = () => {
+        db.transaction((tx) => {
+            tx.executeSql(
+                "CREATE TABLE IF NOT EXIST"
+                + "Users"
+                + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, Username TEXT, Password TEXT)"
+            )
+        })
+    }
+
+    console.log(username)
+
+    const setData = async () => {
+        if (username.length == 0) {
+            Alert.alert('Alert!', 'Please Enter your Username and Password')
+        } else {
+            try {
+                await db.transaction(async (tx) => {
+                    await tx.executeSql(
+                        "INSERT INTO Users (Username, Password) VALUES (?,?)"
+                        [username, password]
+                    );
+                })
+
+                props.navigation.navigate('HomeDrawer');
+            } catch (error) {
+                console.log("hello", error)
+            }
+        }
+    }
+
+    const getData = () => {
+        try {
+            db.transaction((tx) => {
+                tx.executeSql(
+                    "SELECT Username, Password FROM Users",
+                    [],
+                    (tx, results) => {
+                        var len = results.rows.length
+                        if (len > 0) {
+                            props.navigation.navigate('HomeDrawer');
+                        }
+                    }
+                )
+            })
+        } catch (error) {
+
+        }
+    }
 
     const Login = () => {
         fetch("https://noahv9.promptus8.com/NOAHAPI/api/get/NOAHAuth", {
@@ -32,7 +106,6 @@ const LoginScreen = props => {
                 'secretkey': 'Askfusqlrcopr',
             }
         })
-
             .then((response) => response.json())
             .then((responseData) => {
                 console.log(
@@ -40,14 +113,11 @@ const LoginScreen = props => {
                     "Response Body -> " + JSON.stringify(responseData)
                 )
 
-                // let jsonres = JSON.parse(responseData);
-
                 console.log(responseData.status);
                 if (responseData.status == 200) {
                     props.navigation.navigate('HomeDrawer');
                 } else {
                     setErrorMessage(responseData.message)
-
                 }
                 // login 
             })
@@ -88,7 +158,7 @@ const LoginScreen = props => {
                                                 placeholder='Username'
                                                 style={styles.textInput}
                                                 placeholderTextColor='#b6becc'
-                                                onChangeText={text => setUsername(text)}
+                                                onChangeText={value => setUsername(value)}
                                                 value={username}
                                                 returnKeyType="next"
                                                 focus
@@ -99,7 +169,7 @@ const LoginScreen = props => {
                                                 placeholder='Password'
                                                 style={styles.textInput}
                                                 placeholderTextColor='#b6becc'
-                                                onChangeText={text => setPassword(text)}
+                                                onChangeText={value => setPassword(value)}
                                                 value={password}
                                                 secureTextEntry={true}
                                                 ref={(input) => { this.secondTextInput = input; }}
